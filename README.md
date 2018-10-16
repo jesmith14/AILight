@@ -1,17 +1,91 @@
-# Philips Hue AI Weather iOS App
+The hue Apple SDK by Philips
+===============
+(c) Copyright Philips 2012-2014
+Introduction
+----------------
+The Hue SDK is a set of tools that are designed to make it easy to access the Hue system through the Hue Wi-Fi network connected bridge and control an associated set of connected lamps. The aim of the SDK is to enable you to create your own applications for the Hue system.
+The tools are provided with documentation for the SDK and example code. They are designed to be flexible, whilst easing the use of the more complex components of the system.
 
-## Weather Controlling iOS App for the Philips Hue Lighting System
+Supported platforms
+----------------
+The hue Apple SDK provides an Objective C API to access the hue system and is available and supported on the following platforms:
 
-### Monica Ravichandran, Kalyan Vejalla, Landon Gerrits, Jessie Smith, Andrew Cofano
+* iOS platform SDK
+ * Supported from iOS 5.0 and higher
+* OS X platform SDK
+ * Supported from OS X 10.7 and higher
 
-Almost everything nowadays has an element of “smart” to it- from smartphones, to smart TVs, to even AI assistants in our cars. This is exactly what Philips Hue was trying to do with the Lighting Industry - make smart lighting. The whole purpose of smart lighting is to reduce energy consumption at the same time as providing an ambient and aesthetic user experience. The history of the lighting goes all the way back to Thomas Edison in 1879 and we have come a long way since. After the light bulb was invented the next most prominent lighting invention was the LED light. LED stands for Light-Emitting Diode and is a type of solid-state lighting. The science behind the LED light is that it uses a semiconductor to convert electricity into light in order to reduce the need for reflectors and diffusers that trap light. In addition to this, they are the most efficient bulbs on the market today. Philips Hue revolutionized this by creating a product that incorporates ease, aesthetic, and efficiency. 
+Get Started
+----------------
+To get started programming with the hue Apple SDK there are 2 main approaches you can take:
 
-The way the Philips Hue Lighting System works is that you can connect a range of lights from their system to one “bridge” which connects to your home router. Then when you log into the app using the same wifi you can connect to the bridge and get a clean UI interface to manage all the lights in your home. With the click of one button you could turn off the lights downstairs or change the color of your lamp in your bedroom to an ambient blue color. 
+###Integrate the SDK into an existing or new project
+Depending on your choice of platform, use either    _HueSDK\_iOS.framework_ or the _HueSDK\_OSX.framework_ folder from this repository.
 
-Because of how unique and impactful this lighting system is we have decided to use the Philips Hue SDK to connect with the lighting system for our AI project. The purpose and goal of our project is to change the color of the ambient lighting in the area/room depending on the outside weather. We plan on achieving this goal with a simple iOS app. This app would get information about the weather at the user’s current location using either the Open Weather API or the Dark Sky API. It would then parse this information and use it to predict an ambient color for the room. The app would use the Philips iOS SDK in order to connect to the Philips Hue Lightbulb and change the color of the light. For example, when it is rainy outside with a temperature of 60 degrees fahrenheit, the color would be light blue and when it’s sunny outside, the color would be light bright yellow. 
+After downloading, drag the framework folder to your Xcode project and add ‘-ObjC’ to your linker flags under your project Build Settings.
+Next download the files from the Lumberjack folder from this repository and add them to your project.
 
-The AI component of this project consists of logging when a user changes the lighting. Our system will log the time, color, and intensity of the lights. Our system will be trained by this user behavior and it will use this information to predict what the lighting scheme should be.
+###Use our QuickStart app as your base
+Our QuickStart app is a bare bones application with minimal code for connecting and authenticating to a bridge and updating a lightstate. A good starting point for creating your own app.  Depending on your choice of platform, use either the project available in the _QuickStart iOS_ or the  _QuickStart OS X_ folder from this repository.
 
-Our device is meant to change the mood of the space based on weather through ambient lighting as well as provide useful information to the user about the weather outside. This is intended for any household or anyone who likes ambient/aesthetic lighting. People who frequently use the Philips Hue Light System would be our target audience. In conclusion, we hope to improve the user experience and enhance the Philips Hue Lighting System. 
+###Acknowledgements
+Please adhere to any third party licenses that are applicable on this SDK when building applications with our SDK or using the QuickStart applications as your base (see ACKNOWLEDGEMENTS file in this repository, for applicable licenses).
 
-[Will put link to Calendar Here]
+Swift Integration
+----------------
+To start using the hue Apple SDK in your Swift projects:
+
+* Add a new file to your project, an Objective-C .m file.
+* When asked about creating a bridge header file, say yes.
+* Remove the unused .m file you just added.
+
+* Add your Objective-C import statements to the created bridge header .h file, like for using the hue Apple SDK:
+ * For iOS:
+<pre>#import &lt;HueSDK\_iOS/HueSDK.h></pre>
+ * For OS X:
+<pre>#import &lt;HueSDK\_OSX/HueSDK.h></pre>
+
+Once you’ve added the hue Apple SDK to your bridge header, you can start using the SDK in your Swift project.
+
+SDK Guide
+----------------
+For general principles of the hue system and an overview of our SDK API with code examples please visit our [Apple API Guide](http://developers.meethue.com/documentation/apple-api-guide) on our developer portal. 
+
+Repository Contents
+----------------
+* ApplicationDesignNotes
+ * Contains documentation that is useful when designing a hue application. Currently contains documentation for doing color conversion.
+* Documentation
+ * Contains API documentation for each platform in docset and html format. 
+* HueSDK_iOS.framework
+ * Framework for the iOS platform
+* HueSDK_OSX.framework
+ * Framework for the OS X platform
+* QuickStartApp_IOS
+ * QuickStart application for the iOS platform
+* QuickStartApp_OSX
+ * QuickStart application for the OS X platform
+* Lumberjack
+ * Logging library that used by the HueSDK. Make sure you add the files in this folder to your project.
+
+Help and Support
+----------------
+Stuck, need help or any suggestions on how to improve the hue Apple SDK? For now please raise an issue and one of your devs will reply shortly.
+
+Disclaimer
+----------------
+Philips releases this SDK with friendly house rules. These friendly house rules are part of a legal framework; this to protect both the developers and hue. The friendly house rules cover e.g. the naming of Philips and of hue which can only be used as a reference (a true and honest statement) and not as a an brand or identity. Also covered is that the hue SDK and API can only be used for hue and for no other application or product. Very common sense friendly rules that are common practice amongst leading brands that have released their SDK’s.
+
+Copyright (c) 2012- 2013, Philips Electronics N.V. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+* Neither the name of Philips Electronics N.V. , nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOTLIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FORA PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER ORCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, ORPROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OFLIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDINGNEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THISSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
