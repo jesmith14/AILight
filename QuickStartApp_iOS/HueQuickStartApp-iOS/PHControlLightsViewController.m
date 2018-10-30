@@ -5,6 +5,7 @@
 
 #import "PHControlLightsViewController.h"
 #import "PHAppDelegate.h"
+#import "HueQuickStartApp_iOS-Swift.h"
 
 #import <HueSDK_iOS/HueSDK.h>
 #define MAX_HUE 65535
@@ -15,6 +16,7 @@
 @property (nonatomic,weak) IBOutlet UILabel *bridgeIpLabel;
 @property (nonatomic,weak) IBOutlet UILabel *bridgeLastHeartbeatLabel;
 @property (nonatomic,weak) IBOutlet UIButton *randomLightsButton;
+@property (weak, nonatomic) IBOutlet UIButton *otherSettingsButton;
 
 @end
 
@@ -105,6 +107,18 @@
 
 - (IBAction)selectOtherBridge:(id)sender{
     [UIAppDelegate searchForBridgeLocal];
+}
+
+- (IBAction)didSelectOtherSettings:(id)sender {
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"ImportPhotoViewController"
+                                                         bundle:nil];
+
+    SWIFT_MainViewController* myVC = [storyboard instantiateViewControllerWithIdentifier:@"Photo Import"];
+    
+    // Configure the view controller.
+    
+    // Display the view controller
+    [self presentViewController:myVC animated:YES completion:nil];
 }
 
 - (IBAction)randomizeColoursOfConnectLights:(id)sender{

@@ -15,6 +15,8 @@
 		4CCACFA9165692D5008E9D69 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CCACFA8165692D5008E9D69 /* Default.png */; };
 		4CCACFAB165692D5008E9D69 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CCACFAA165692D5008E9D69 /* Default@2x.png */; };
 		4CCACFAD165692D5008E9D69 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CCACFAC165692D5008E9D69 /* Default-568h@2x.png */; };
+		5E3E132621852A7E00756384 /* ImportPhotoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E3E132521852A7E00756384 /* ImportPhotoViewController.storyboard */; };
+		5E82AA07217FACAC00A01A4A /* SWIFT_MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E82AA06217FACAC00A01A4A /* SWIFT_MainViewController.swift */; };
 		87194E79184F7FA700576916 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87194E78184F7FA700576916 /* CoreGraphics.framework */; };
 		877BF2C91B4BD4B100118EF2 /* PHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 877BF2C51B4BD4B100118EF2 /* PHAppDelegate.m */; };
 		877BF2CA1B4BD4B100118EF2 /* PHControlLightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 877BF2C71B4BD4B100118EF2 /* PHControlLightsViewController.m */; };
@@ -48,6 +50,9 @@
 		4CCACFA8165692D5008E9D69 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4CCACFAA165692D5008E9D69 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4CCACFAC165692D5008E9D69 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5E3E132521852A7E00756384 /* ImportPhotoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImportPhotoViewController.storyboard; sourceTree = "<group>"; };
+		5E82AA05217FACAB00A01A4A /* HueQuickStartApp-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HueQuickStartApp-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		5E82AA06217FACAC00A01A4A /* SWIFT_MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_MainViewController.swift; sourceTree = "<group>"; };
 		87194E78184F7FA700576916 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		877BF2C41B4BD4B100118EF2 /* PHAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHAppDelegate.h; sourceTree = "<group>"; };
 		877BF2C51B4BD4B100118EF2 /* PHAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHAppDelegate.m; sourceTree = "<group>"; };
@@ -129,10 +134,13 @@
 		4CCACF9C165692D4008E9D69 /* HueQuickStartApp-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				5E82AA05217FACAB00A01A4A /* HueQuickStartApp-iOS-Bridging-Header.h */,
 				877BF2C41B4BD4B100118EF2 /* PHAppDelegate.h */,
 				877BF2C51B4BD4B100118EF2 /* PHAppDelegate.m */,
 				877BF2C61B4BD4B100118EF2 /* PHControlLightsViewController.h */,
 				877BF2C71B4BD4B100118EF2 /* PHControlLightsViewController.m */,
+				5E82AA06217FACAC00A01A4A /* SWIFT_MainViewController.swift */,
+				5E3E132521852A7E00756384 /* ImportPhotoViewController.storyboard */,
 				877BF2C81B4BD4B100118EF2 /* PHControlLightsViewController.xib */,
 				4CCACF9D165692D4008E9D69 /* Supporting Files */,
 			);
@@ -248,7 +256,8 @@
 				ORGANIZATIONNAME = Philips;
 				TargetAttributes = {
 					4CCACF91165692D4008E9D69 = {
-						DevelopmentTeam = VKT95LEUQ9;
+						DevelopmentTeam = 7F72R928UK;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -282,6 +291,7 @@
 				4CCACFAB165692D5008E9D69 /* Default@2x.png in Resources */,
 				4CCACFAD165692D5008E9D69 /* Default-568h@2x.png in Resources */,
 				877BF2DF1B4BD4EC00118EF2 /* PHBridgeSelectionViewController.xib in Resources */,
+				5E3E132621852A7E00756384 /* ImportPhotoViewController.storyboard in Resources */,
 				877BF2CB1B4BD4B100118EF2 /* PHControlLightsViewController.xib in Resources */,
 				877BF2E11B4BD4EC00118EF2 /* press_smartbridge@2x.png in Resources */,
 			);
@@ -295,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F715240418337FD50033689C /* DDLog.m in Sources */,
+				5E82AA07217FACAC00A01A4A /* SWIFT_MainViewController.swift in Sources */,
 				F715240218337FD50033689C /* DDASLLogger.m in Sources */,
 				877BF2C91B4BD4B100118EF2 /* PHAppDelegate.m in Sources */,
 				4CCACFA3165692D5008E9D69 /* main.m in Sources */,
@@ -327,6 +338,7 @@
 		4CCACFAE165692D5008E9D69 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -337,6 +349,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -359,6 +372,7 @@
 		4CCACFAF165692D5008E9D69 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -368,6 +382,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -384,9 +399,10 @@
 		4CCACFB1165692D5008E9D69 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = VKT95LEUQ9;
+				DEVELOPMENT_TEAM = 7F72R928UK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					../,
@@ -397,12 +413,16 @@
 				GCC_PREFIX_HEADER = "HueQuickStartApp-iOS/HueQuickStartApp-iOS-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/HueQuickStartApp-iOS/HueQuickStartApp-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.philips.lighting.hue.sdk.HueQuickStartApp-iOS.Landon";
 				PRODUCT_NAME = "HueQuickStartApp-iOS";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HueQuickStartApp-iOS/HueQuickStartApp-iOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -411,9 +431,10 @@
 		4CCACFB2165692D5008E9D69 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = VKT95LEUQ9;
+				DEVELOPMENT_TEAM = 7F72R928UK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					../,
@@ -424,12 +445,15 @@
 				GCC_PREFIX_HEADER = "HueQuickStartApp-iOS/HueQuickStartApp-iOS-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/HueQuickStartApp-iOS/HueQuickStartApp-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.philips.lighting.hue.sdk.HueQuickStartApp-iOS.Landon";
 				PRODUCT_NAME = "HueQuickStartApp-iOS";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HueQuickStartApp-iOS/HueQuickStartApp-iOS-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
