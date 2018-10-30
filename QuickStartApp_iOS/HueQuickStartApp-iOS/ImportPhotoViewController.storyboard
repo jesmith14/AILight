@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="V02-4f-bl5">
+            <objects>
+                <viewController storyboardIdentifier="Photo Import" id="16O-TS-r97" customClass="SWIFT_MainViewController" customModule="HueQuickStartApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FeH-hw-cCm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wui-fi-jRo">
+                                <rect key="frame" x="153" y="328.5" width="69" height="30"/>
+                                <state key="normal" title="Set Lights"/>
+                                <connections>
+                                    <action selector="didTapSetLights:" destination="16O-TS-r97" eventType="touchUpInside" id="Y8Z-j3-0ii"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ay-Na-ZQU">
+                                <rect key="frame" x="158.5" y="498" width="58" height="30"/>
+                                <state key="normal" title="Go Back"/>
+                                <connections>
+                                    <action selector="didTapGoBack:" destination="16O-TS-r97" eventType="touchUpInside" id="B29-fF-Srl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQ0-oU-CHg">
+                                <rect key="frame" x="141.5" y="154" width="92" height="30"/>
+                                <state key="normal" title="Import Image"/>
+                                <connections>
+                                    <action selector="didTapImportPhoto:" destination="16O-TS-r97" eventType="touchUpInside" id="AAZ-3j-mp3"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hue" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eah-kN-C6R">
+                                <rect key="frame" x="44.5" y="239" width="68" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Eah-kN-C6R" secondAttribute="height" multiplier="34:15" id="P0S-lb-6jO"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sat" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DhC-e2-ETf">
+                                <rect key="frame" x="153.5" y="239" width="68" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="DhC-e2-ETf" secondAttribute="height" multiplier="34:15" id="17d-5g-OIO"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bright" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C9D-Xa-CwQ">
+                                <rect key="frame" x="263" y="239" width="68" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="C9D-Xa-CwQ" secondAttribute="height" multiplier="34:15" id="BTq-V1-P4X"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Wui-fi-jRo" firstAttribute="top" secondItem="FQ0-oU-CHg" secondAttribute="bottom" constant="144.5" id="59V-p4-63c"/>
+                            <constraint firstItem="DhC-e2-ETf" firstAttribute="centerX" secondItem="bDk-BP-TIQ" secondAttribute="centerX" id="9au-4K-aHR"/>
+                            <constraint firstItem="DhC-e2-ETf" firstAttribute="leading" secondItem="Eah-kN-C6R" secondAttribute="trailing" constant="41" id="9lY-48-Pf2"/>
+                            <constraint firstItem="8ay-Na-ZQU" firstAttribute="centerX" secondItem="bDk-BP-TIQ" secondAttribute="centerX" id="DfH-AF-RpP"/>
+                            <constraint firstItem="Wui-fi-jRo" firstAttribute="top" secondItem="Eah-kN-C6R" secondAttribute="bottom" constant="59.5" id="Pzd-4Z-eMj"/>
+                            <constraint firstItem="Wui-fi-jRo" firstAttribute="top" secondItem="DhC-e2-ETf" secondAttribute="bottom" constant="59.5" id="WiO-zq-6mK"/>
+                            <constraint firstItem="C9D-Xa-CwQ" firstAttribute="leading" secondItem="DhC-e2-ETf" secondAttribute="trailing" constant="41.5" id="Ysi-6i-Hgt"/>
+                            <constraint firstItem="8ay-Na-ZQU" firstAttribute="top" secondItem="Wui-fi-jRo" secondAttribute="bottom" constant="139.5" id="cu6-FS-EUm"/>
+                            <constraint firstItem="FQ0-oU-CHg" firstAttribute="centerX" secondItem="bDk-BP-TIQ" secondAttribute="centerX" id="dhl-Eb-Ip1"/>
+                            <constraint firstItem="Wui-fi-jRo" firstAttribute="centerY" secondItem="bDk-BP-TIQ" secondAttribute="centerY" id="eFW-3m-r2Y"/>
+                            <constraint firstItem="Wui-fi-jRo" firstAttribute="top" secondItem="C9D-Xa-CwQ" secondAttribute="bottom" constant="59.5" id="i9c-JN-cQQ"/>
+                            <constraint firstItem="Wui-fi-jRo" firstAttribute="centerX" secondItem="bDk-BP-TIQ" secondAttribute="centerX" id="pyX-nf-JYo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bDk-BP-TIQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="brightnessTextField" destination="C9D-Xa-CwQ" id="Qz9-zG-RLk"/>
+                        <outlet property="hueTextField" destination="Eah-kN-C6R" id="9kU-ub-mTK"/>
+                        <outlet property="saturationTextField" destination="DhC-e2-ETf" id="qfe-x1-pgO"/>
+                        <outlet property="setLightsButton" destination="Wui-fi-jRo" id="CrP-5b-VeD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kIq-8B-g9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="16.800000000000001" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+</document>
