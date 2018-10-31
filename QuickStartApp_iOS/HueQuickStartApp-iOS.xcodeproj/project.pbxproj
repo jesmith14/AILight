@@ -29,6 +29,7 @@
 		877BF2DF1B4BD4EC00118EF2 /* PHBridgeSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 877BF2D61B4BD4EC00118EF2 /* PHBridgeSelectionViewController.xib */; };
 		877BF2E01B4BD4EC00118EF2 /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 877BF2D81B4BD4EC00118EF2 /* press_smartbridge.png */; };
 		877BF2E11B4BD4EC00118EF2 /* press_smartbridge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 877BF2D91B4BD4EC00118EF2 /* press_smartbridge@2x.png */; };
+		F57E33B1218972AB00FE4A6A /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57E33B0218972AB00FE4A6A /* Package.swift */; };
 		F715240118337FD50033689C /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F71523F318337FD50033689C /* DDAbstractDatabaseLogger.m */; };
 		F715240218337FD50033689C /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F71523F518337FD50033689C /* DDASLLogger.m */; };
 		F715240318337FD50033689C /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F71523F718337FD50033689C /* DDFileLogger.m */; };
@@ -70,6 +71,7 @@
 		877BF2D61B4BD4EC00118EF2 /* PHBridgeSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHBridgeSelectionViewController.xib; sourceTree = "<group>"; };
 		877BF2D81B4BD4EC00118EF2 /* press_smartbridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = press_smartbridge.png; sourceTree = "<group>"; };
 		877BF2D91B4BD4EC00118EF2 /* press_smartbridge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "press_smartbridge@2x.png"; sourceTree = "<group>"; };
+		F57E33B0218972AB00FE4A6A /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		F71523F218337FD50033689C /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		F71523F318337FD50033689C /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
 		F71523F418337FD50033689C /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		4CCACF87165692D4008E9D69 = {
 			isa = PBXGroup;
 			children = (
+				F57E33B32189750C00FE4A6A /* Dependencies */,
 				877BF2CC1B4BD4EC00118EF2 /* SDKWizard */,
 				4CCACF9C165692D4008E9D69 /* HueQuickStartApp-iOS */,
 				4CCACF95165692D4008E9D69 /* Frameworks */,
@@ -193,6 +196,14 @@
 				877BF2D91B4BD4EC00118EF2 /* press_smartbridge@2x.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		F57E33B32189750C00FE4A6A /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				F57E33B0218972AB00FE4A6A /* Package.swift */,
+			);
+			path = Dependencies;
 			sourceTree = "<group>";
 		};
 		F71523F118337FD50033689C /* Lumberjack */ = {
@@ -310,6 +321,7 @@
 				877BF2C91B4BD4B100118EF2 /* PHAppDelegate.m in Sources */,
 				4CCACFA3165692D5008E9D69 /* main.m in Sources */,
 				F715240718337FD50033689C /* DispatchQueueLogFormatter.m in Sources */,
+				F57E33B1218972AB00FE4A6A /* Package.swift in Sources */,
 				877BF2CA1B4BD4B100118EF2 /* PHControlLightsViewController.m in Sources */,
 				F715240518337FD50033689C /* DDTTYLogger.m in Sources */,
 				F715240118337FD50033689C /* DDAbstractDatabaseLogger.m in Sources */,
