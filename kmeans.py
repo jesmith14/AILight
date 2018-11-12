@@ -164,6 +164,15 @@ class Kmeans(object):
             return False
 
         return True
+    
+    def showCentroidColours(self):
+        for cluster in self.clusters:
+            rgb = []
+            for centroid in cluster.centroid:
+                rgb.append((int)(centroid))
+            # rgb = ((int)(cluster.centroid[0]), (int)(cluster.centroid[1]), (int)(cluster.centroid[2]))
+            image = Image.new("RGB", (200, 200), tuple(rgb))
+            image.show()
 
     def getClusterColorsAsHex(self):
         """
@@ -217,6 +226,15 @@ class Kmeans(object):
                                 i = i+1
 
                 localPixels[idx] = nearest.centroid
+                # w, h = self.image.size
+                # localPixels = numpy.asarray(localPixels)\
+                #     .astype('uint8')\
+                #     .reshape((h, w, 3))
+                # print(localPixels)
+                 
+                # colourMap = Image.fromarray(localPixels)
+                # colourMap.show()
+                 
 
 
     # this function creates the tuple array of colors and their corresponding final weights
@@ -256,11 +274,12 @@ def cmp(a, b):
 
 def main():
     # Change this to the string of the picture we are going to constantly override from Swift side
-    image = Image.open("images/test-flower.jpg")
+    image = Image.open("images/color-schemes/training_data_16.jpg")
     k = Kmeans()
     k.run(image)
     k.getClusterColorsAsHex()
     k.getWeightedColors()
+    k.showCentroidColours()
 
 if __name__ == "__main__":
     main()
