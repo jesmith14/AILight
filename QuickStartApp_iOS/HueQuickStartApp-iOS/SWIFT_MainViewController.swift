@@ -5,22 +5,20 @@
 //  Created by Landon Gerrits on 10/23/18.
 //  Copyright © 2018 Philips. All rights reserved.
 //
-
-import PythonAPI
-import PerfectPython
 import UIKit
-
+import Alamofire
 @objc class SWIFT_MainViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var setLightsButton: UIButton!
     @IBOutlet weak var hueTextField: UITextField!
     @IBOutlet weak var saturationTextField: UITextField!
     @IBOutlet weak var brightnessTextField: UITextField!
-    
+    var image = UIImagePickerController()
+    var currentImage : UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        image.delegate = self
     }
     
     func generateLightScheme(){
@@ -48,15 +46,12 @@ import UIKit
             
         }
     }
-    
     @IBAction func didTapImportPhoto(_ sender: UIButton) {
-        let image = UIImagePickerController()
-        image.delegate = self
+        //let image = UIImagePickerController()
+        
         image.sourceType = UIImagePickerController.SourceType.photoLibrary
-        self.present(image, animated: true)
-        {
-            //after image has been selected
-        }
+        present(image, animated: true,completion: nil)
+
     }
     
     @IBAction func didTapSetLights(_ sender: Any) {
@@ -66,6 +61,26 @@ import UIKit
     @IBAction func didTapGoBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-
+}
+extension SWIFT_MainViewController{
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        if let selectedImage = info[.originalImage] as? UIImage{
+            currentImage = selectedImage
+        }
+        dismiss(animated:true,completion: nil)
+        //let name = "testName"
+        sendRequest(name: "testName")
+    }
+    func sendRequest(name:String){
+        let req = NSMutableURLRequest(url: NSURL(string:"http://0.0.0.0:5000/imageUpload")! as URL)
+                        let ses = URLSession.shared
+                        req.httpMethod = "POST"
+                        req.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+                        req.setValue(name, forHTTPHeaderField: "X-FileName")
+                        let jpgData = currentImage.jpegData(compressionQuality: 1.0)
+                        req.httpBody = jpgData
+                        let task = ses.uploadTask(withStreamedRequest: req as URLRequest)
+                        task.resume()
+    }
 }
