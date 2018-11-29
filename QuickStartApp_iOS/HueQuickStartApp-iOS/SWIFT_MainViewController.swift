@@ -81,6 +81,8 @@ extension SWIFT_MainViewController{
                         let jpgData = currentImage.jpegData(compressionQuality: 1.0)
                         req.httpBody = jpgData
                         let task = ses.uploadTask(withStreamedRequest: req as URLRequest)
+                        //let resp = task.response
                         task.resume()
+        //print(resp)
     }
 }
