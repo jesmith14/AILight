@@ -74,15 +74,31 @@ extension SWIFT_MainViewController{
     }
     func sendRequest(name:String){
         let req = NSMutableURLRequest(url: NSURL(string:"http://0.0.0.0:5000/imageUpload")! as URL)
-                        let ses = URLSession.shared
-                        req.httpMethod = "POST"
-                        req.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
-                        req.setValue(name, forHTTPHeaderField: "X-FileName")
-                        let jpgData = currentImage.jpegData(compressionQuality: 1.0)
-                        req.httpBody = jpgData
-                        let task = ses.uploadTask(withStreamedRequest: req as URLRequest)
-                        //let resp = task.response
-                        task.resume()
-        //print(resp)
+        let ses = URLSession.shared
+        req.httpMethod = "POST"
+        req.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+        req.setValue(name, forHTTPHeaderField: "X-FileName")
+        let jpgData = currentImage.jpegData(compressionQuality: 1.0)
+        req.httpBody = jpgData
+        let task = ses.dataTask(with: req as URLRequest, completionHandler: { data, response, error in
+                
+            guard error == nil else {
+                return
+            }
+                
+            guard let data = data else {
+                return
+            }
+            do {
+                    //create json object from data
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                    print(json)
+                        // handle json...
+                }
+            } catch let error {
+                    print(error.localizedDescription)
+            }
+        })
+        task.resume()
     }
 }
