@@ -12,9 +12,21 @@ def ImageUpload():
         f.write(data)
         f.close()
         #time.sleep()
-        mainRun()
-        return jsonify(resp='success')
-    return jsonify(resp='fail')
+        color1=[]
+        color2=[]
+        color3=[]
+        weights = mainRun()
+        color1.append(weights[0][1][0])
+        color1.append(weights[0][1][1])
+        color1.append(weights[0][1][2])
+        color2.append(weights[1][1][0])
+        color2.append(weights[1][1][1])
+        color2.append(weights[1][1][2])
+        color3.append(weights[2][1][0])
+        color3.append(weights[2][1][1])
+        color3.append(weights[2][1][2])
+        return jsonify(color1=color1,color2=color2,color3=color3)
+    return jsonify(error='Request Failed')
 
 if __name__ == '__main__':
     app.debug = True
