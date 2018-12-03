@@ -20,19 +20,7 @@ import Alamofire
     // hue
     // saturation
     // brightness
-    
-    var hue1 = 0;
-    var sat1 = 100;
-    var bright1 = 100;
-    
-    var hue2 = 0;
-    var sat2 = 100;
-    var bright2 = 100;
-    
-    var hue3 = 0;
-    var sat3 = 100;
-    var bright3 = 100;
-
+   
     var imagePicker = UIImagePickerController()
     var currentImage : UIImage!
     
@@ -85,7 +73,7 @@ import Alamofire
 }
 
 extension SWIFT_MainViewController{
-    func imagePickerController(_ picker: UIImagePickerController,
+   func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         if let selectedImage = info[.originalImage] as? UIImage{
             currentImage = selectedImage
@@ -114,11 +102,24 @@ extension SWIFT_MainViewController{
                 return
             }
             do {
-                //create json object from data
-                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                    print(json)
-                        // handle json...
-                }
+//                //create json object from data
+//                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+//                    print(json)
+//                        // handle json...
+//                }
+               let decoder = JSONDecoder()
+               let lightCollection = try decoder.decode(LightCollection.self, from: data)
+               var Light1 = SingleLight(hue: self.getHueValue(hueValue: lightCollection.color1[0]), saturation: lightCollection.color1[1], brightness: lightCollection.color1[2])
+               var Light2 = SingleLight(hue: self.getHueValue(hueValue: lightCollection.color2[0]), saturation: lightCollection.color2[1], brightness: lightCollection.color2[2])
+               var Light3 = SingleLight(hue: self.getHueValue(hueValue: lightCollection.color3[0]), saturation: lightCollection.color3[1], brightness: lightCollection.color3[2])
+
+               self.grouping1.backgroundColor = UIColor(hue: CGFloat(Light1.hue), saturation: CGFloat(Light1.saturation), brightness: CGFloat(Light1.brightness), alpha: 1.0)
+               self.grouping2.backgroundColor = UIColor(hue: CGFloat(Light2.hue), saturation: CGFloat(Light2.saturation), brightness: CGFloat(Light2.brightness), alpha: 1.0)
+               self.grouping3.backgroundColor = UIColor(hue: CGFloat(Light3.hue), saturation: CGFloat(Light3.saturation), brightness: CGFloat(Light3.brightness), alpha: 1.0)
+               
+               
+               
+               
             } catch let error {
                     print(error.localizedDescription)
             }
