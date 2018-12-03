@@ -32,6 +32,8 @@
 		CE5923AE1A78AF9894900A87 /* Pods_HueQuickStartApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142969533EEF5202ADD101D8 /* Pods_HueQuickStartApp_iOS.framework */; };
 		D2A7155A6FC2F4314E735632 /* Pods_HueQuickStartApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B2B6D7328DA3D2C65207073 /* Pods_HueQuickStartApp_iOS.framework */; };
 		E21164991C38485961E31EF8 /* Pods_HueQuickStartApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF84A46041F50B5C26983EBD /* Pods_HueQuickStartApp_iOS.framework */; };
+		F5AE1A1721B4EE8D00E2377F /* LightCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE1A1621B4EE8D00E2377F /* LightCollection.swift */; };
+		F5AE1A1921B4EED500E2377F /* SingleLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE1A1821B4EED500E2377F /* SingleLight.swift */; };
 		F715240118337FD50033689C /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F71523F318337FD50033689C /* DDAbstractDatabaseLogger.m */; };
 		F715240218337FD50033689C /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F71523F518337FD50033689C /* DDASLLogger.m */; };
 		F715240318337FD50033689C /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F71523F718337FD50033689C /* DDFileLogger.m */; };
@@ -78,6 +80,8 @@
 		877BF2D91B4BD4EC00118EF2 /* press_smartbridge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "press_smartbridge@2x.png"; sourceTree = "<group>"; };
 		CF1E07A86B41A4BEA57AFD4F /* Pods-HueQuickStartApp-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HueQuickStartApp-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HueQuickStartApp-iOS/Pods-HueQuickStartApp-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		CF84A46041F50B5C26983EBD /* Pods_HueQuickStartApp_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HueQuickStartApp_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5AE1A1621B4EE8D00E2377F /* LightCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightCollection.swift; sourceTree = "<group>"; };
+		F5AE1A1821B4EED500E2377F /* SingleLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleLight.swift; sourceTree = "<group>"; };
 		F71523F218337FD50033689C /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		F71523F318337FD50033689C /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
 		F71523F418337FD50033689C /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
@@ -154,7 +158,9 @@
 				877BF2C41B4BD4B100118EF2 /* PHAppDelegate.h */,
 				877BF2C51B4BD4B100118EF2 /* PHAppDelegate.m */,
 				877BF2C61B4BD4B100118EF2 /* PHControlLightsViewController.h */,
+				F5AE1A1821B4EED500E2377F /* SingleLight.swift */,
 				877BF2C71B4BD4B100118EF2 /* PHControlLightsViewController.m */,
+				F5AE1A1621B4EE8D00E2377F /* LightCollection.swift */,
 				5E82AA06217FACAC00A01A4A /* SWIFT_MainViewController.swift */,
 				5E3E132521852A7E00756384 /* ImportPhotoViewController.storyboard */,
 				877BF2C81B4BD4B100118EF2 /* PHControlLightsViewController.xib */,
@@ -388,8 +394,10 @@
 				F715240418337FD50033689C /* DDLog.m in Sources */,
 				5E82AA07217FACAC00A01A4A /* SWIFT_MainViewController.swift in Sources */,
 				F715240218337FD50033689C /* DDASLLogger.m in Sources */,
+				F5AE1A1721B4EE8D00E2377F /* LightCollection.swift in Sources */,
 				877BF2C91B4BD4B100118EF2 /* PHAppDelegate.m in Sources */,
 				4CCACFA3165692D5008E9D69 /* main.m in Sources */,
+				F5AE1A1921B4EED500E2377F /* SingleLight.swift in Sources */,
 				F715240718337FD50033689C /* DispatchQueueLogFormatter.m in Sources */,
 				877BF2CA1B4BD4B100118EF2 /* PHControlLightsViewController.m in Sources */,
 				F715240518337FD50033689C /* DDTTYLogger.m in Sources */,

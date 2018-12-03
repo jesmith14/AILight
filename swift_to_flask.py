@@ -25,6 +25,7 @@ def ImageUpload():
         color3.append(weights[2][1][0])
         color3.append(weights[2][1][1])
         color3.append(weights[2][1][2])
+        test = jsonify(color1=color1,color2=color2,color3=color3)
         return jsonify(color1=color1,color2=color2,color3=color3)
     return jsonify(error='Request Failed')
 

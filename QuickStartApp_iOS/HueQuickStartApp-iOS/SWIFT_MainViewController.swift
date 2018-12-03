@@ -102,28 +102,39 @@ extension SWIFT_MainViewController{
                 return
             }
             do {
-//                //create json object from data
-//                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-//                    print(json)
+//               //create json object from data
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                   print(json)
 //                        // handle json...
-//                }
+               }
                let decoder = JSONDecoder()
                let lightCollection = try decoder.decode(LightCollection.self, from: data)
-               var Light1 = SingleLight(hue: self.getHueValue(hueValue: lightCollection.color1[0]), saturation: lightCollection.color1[1], brightness: lightCollection.color1[2])
-               var Light2 = SingleLight(hue: self.getHueValue(hueValue: lightCollection.color2[0]), saturation: lightCollection.color2[1], brightness: lightCollection.color2[2])
-               var Light3 = SingleLight(hue: self.getHueValue(hueValue: lightCollection.color3[0]), saturation: lightCollection.color3[1], brightness: lightCollection.color3[2])
-
-               self.grouping1.backgroundColor = UIColor(hue: CGFloat(Light1.hue), saturation: CGFloat(Light1.saturation), brightness: CGFloat(Light1.brightness), alpha: 1.0)
-               self.grouping2.backgroundColor = UIColor(hue: CGFloat(Light2.hue), saturation: CGFloat(Light2.saturation), brightness: CGFloat(Light2.brightness), alpha: 1.0)
-               self.grouping3.backgroundColor = UIColor(hue: CGFloat(Light3.hue), saturation: CGFloat(Light3.saturation), brightness: CGFloat(Light3.brightness), alpha: 1.0)
-               
-               
-               
+                print("DATA: ")
+                print(data)
+               var Light1 = SingleLight(hue: lightCollection.color1[0], saturation: lightCollection.color1[1], brightness: lightCollection.color1[2])
+               var Light2 = SingleLight(hue: lightCollection.color2[0], saturation: lightCollection.color2[1], brightness: lightCollection.color2[2])
+               var Light3 = SingleLight(hue: lightCollection.color3[0], saturation: lightCollection.color3[1], brightness: lightCollection.color3[2])
+                print(CGFloat(Light1.hue))
+                print(CGFloat(Light1.saturation))
+                print(CGFloat(Light1.brightness))
+                self.grouping1.backgroundColor = UIColor(red: CGFloat(Light1.hue)/255.0, green: CGFloat(Light1.saturation)/255.0, blue: CGFloat(Light1.brightness)/255.0, alpha: 1.0)
+                self.grouping2.backgroundColor = UIColor(red: CGFloat(Light2.hue)/255.0, green: CGFloat(Light2.saturation)/255.0, blue: CGFloat(Light2.brightness)/255.0, alpha: 1.0)
+                self.grouping3.backgroundColor = UIColor(red: CGFloat(Light3.hue)/255.0, green: CGFloat(Light3.saturation)/255.0, blue: CGFloat(Light3.brightness)/255.0, alpha: 1.0)
+                
+                DispatchQueue.main.async {
+                    self.grouping1.backgroundColor = UIColor(red: CGFloat(Light1.hue)/255.0, green: CGFloat(Light1.saturation)/255.0, blue: CGFloat(Light1.brightness)/255.0, alpha: 1.0)
+                    self.grouping2.backgroundColor = UIColor(red: CGFloat(Light2.hue)/255.0, green: CGFloat(Light2.saturation)/255.0, blue: CGFloat(Light2.brightness)/255.0, alpha: 1.0)
+                    self.grouping3.backgroundColor = UIColor(red: CGFloat(Light3.hue)/255.0, green: CGFloat(Light3.saturation)/255.0, blue: CGFloat(Light3.brightness)/255.0, alpha: 1.0)
+                }
+               //self.grouping1.backgroundColor = UIColor(hue: CGFloat(Light1.hue), saturation: CGFloat(Light1.saturation), brightness: CGFloat(Light1.brightness), alpha: 1.0)
+               //self.grouping2.backgroundColor = UIColor(hue: CGFloat(Light2.hue), saturation: CGFloat(Light2.saturation), brightness: CGFloat(Light2.brightness), alpha: 1.0)
+               //self.grouping3.backgroundColor = UIColor(hue: CGFloat(Light3.hue), saturation: CGFloat(Light3.saturation), brightness: CGFloat(Light3.brightness), alpha: 1.0)
                
             } catch let error {
                     print(error.localizedDescription)
             }
         })
+        
         task.resume()
     }
 }
