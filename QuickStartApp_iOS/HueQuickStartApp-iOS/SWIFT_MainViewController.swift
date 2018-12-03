@@ -10,15 +10,40 @@ import Alamofire
 @objc class SWIFT_MainViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var setLightsButton: UIButton!
-    @IBOutlet weak var hueTextField: UITextField!
-    @IBOutlet weak var saturationTextField: UITextField!
-    @IBOutlet weak var brightnessTextField: UITextField!
-    var image = UIImagePickerController()
+    
+    @IBOutlet var imageView: UIImageView!
+    
+    @IBOutlet weak var grouping1: UIView!
+    @IBOutlet weak var grouping2: UIView!
+    @IBOutlet weak var grouping3: UIView!
+    
+    // hue
+    // saturation
+    // brightness
+    
+    var hue1 = 0;
+    var sat1 = 100;
+    var bright1 = 100;
+    
+    var hue2 = 0;
+    var sat2 = 100;
+    var bright2 = 100;
+    
+    var hue3 = 0;
+    var sat3 = 100;
+    var bright3 = 100;
+
+    var imagePicker = UIImagePickerController()
     var currentImage : UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        image.delegate = self
+        imagePicker.delegate = self
+    }
+    
+    func getHueValue(hueValue: Int) -> Int {
+        
+        return (hueValue / 360) * 65535
     }
     
     func generateLightScheme(){
@@ -31,27 +56,22 @@ import Alamofire
             
             if light is PHLight {
                 let lightState = PHLightState()
-                let hueString = hueTextField.text
-                if let myInteger = Float(hueString!) {
-                    lightState.hue = (Int((myInteger / 254.0) * 65535)) as NSNumber
-                }
                 
-                lightState.saturation = Int(saturationTextField.text!)! as NSNumber
-                lightState.brightness = Int(brightnessTextField.text!)! as NSNumber
+                lightState.hue = 360
+                lightState.saturation = 100
+                lightState.brightness = 100
                 
                 // Send lightstate to light
                 bridgeSendAPI.updateLightState(forId: (light as AnyObject).identifier, with: lightState, completionHandler: nil)
             }
-            
-            
         }
     }
+    
     @IBAction func didTapImportPhoto(_ sender: UIButton) {
-        //let image = UIImagePickerController()
         
-        image.sourceType = UIImagePickerController.SourceType.photoLibrary
-        present(image, animated: true,completion: nil)
-
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        present(imagePicker, animated: true,completion: nil)
+        
     }
     
     @IBAction func didTapSetLights(_ sender: Any) {
@@ -61,14 +81,18 @@ import Alamofire
     @IBAction func didTapGoBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
 }
+
 extension SWIFT_MainViewController{
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         if let selectedImage = info[.originalImage] as? UIImage{
             currentImage = selectedImage
+            self.imageView.image = currentImage;
         }
         dismiss(animated:true,completion: nil)
+        
         //let name = "testName"
         sendRequest(name: "testName")
     }
@@ -90,7 +114,7 @@ extension SWIFT_MainViewController{
                 return
             }
             do {
-                    //create json object from data
+                //create json object from data
                 if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
                     print(json)
                         // handle json...
