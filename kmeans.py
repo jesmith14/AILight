@@ -256,8 +256,9 @@ def mainRun():
     k = Kmeans()
     k.run(image)
     k.getClusterColorsAsHex()
-    k.getWeightedColors()
+    weights = k.getWeightedColors()
     k.showCentroidColours()
+    return weights
 
 def main():
     # Change this to the string of the picture we are going to constantly override from Swift side
