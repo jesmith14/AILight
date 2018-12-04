@@ -17,9 +17,9 @@ import Alamofire
     @IBOutlet weak var grouping2: UIView!
     @IBOutlet weak var grouping3: UIView!
     
-    // hue
-    // saturation
-    // brightness
+    var Light1: SingleLight = SingleLight(hue: 0,saturation: 0,brightness: 0)
+    var Light2: SingleLight = SingleLight(hue: 0,saturation: 0,brightness: 0)
+    var Light3: SingleLight = SingleLight(hue: 0,saturation: 0,brightness: 0)
    
     var imagePicker = UIImagePickerController()
     var currentImage : UIImage!
@@ -70,6 +70,22 @@ import Alamofire
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func didTapGrouping1(_ sender: Any) {
+        let vc = ModifyColorVC()
+        
+        vc.hue = 360
+        vc.saturation = 100
+        vc.brightness = 100
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func didTapGrouping2(_ sender: Any) {
+    }
+    
+    @IBAction func didTapGrouping3(_ sender: Any) {
+    }
+    
 }
 
 extension SWIFT_MainViewController{
@@ -111,20 +127,18 @@ extension SWIFT_MainViewController{
                let lightCollection = try decoder.decode(LightCollection.self, from: data)
                 print("DATA: ")
                 print(data)
-               var Light1 = SingleLight(hue: lightCollection.color1[0], saturation: lightCollection.color1[1], brightness: lightCollection.color1[2])
-               var Light2 = SingleLight(hue: lightCollection.color2[0], saturation: lightCollection.color2[1], brightness: lightCollection.color2[2])
-               var Light3 = SingleLight(hue: lightCollection.color3[0], saturation: lightCollection.color3[1], brightness: lightCollection.color3[2])
-                print(CGFloat(Light1.hue))
-                print(CGFloat(Light1.saturation))
-                print(CGFloat(Light1.brightness))
-                self.grouping1.backgroundColor = UIColor(red: CGFloat(Light1.hue)/255.0, green: CGFloat(Light1.saturation)/255.0, blue: CGFloat(Light1.brightness)/255.0, alpha: 1.0)
-                self.grouping2.backgroundColor = UIColor(red: CGFloat(Light2.hue)/255.0, green: CGFloat(Light2.saturation)/255.0, blue: CGFloat(Light2.brightness)/255.0, alpha: 1.0)
-                self.grouping3.backgroundColor = UIColor(red: CGFloat(Light3.hue)/255.0, green: CGFloat(Light3.saturation)/255.0, blue: CGFloat(Light3.brightness)/255.0, alpha: 1.0)
+                self.Light1 = SingleLight(hue: lightCollection.color1[0], saturation: lightCollection.color1[1], brightness: lightCollection.color1[2])
+                self.Light2 = SingleLight(hue: lightCollection.color2[0], saturation: lightCollection.color2[1], brightness: lightCollection.color2[2])
+                self.Light3 = SingleLight(hue: lightCollection.color3[0], saturation: lightCollection.color3[1], brightness: lightCollection.color3[2])
+
+                self.grouping1.backgroundColor = UIColor(red: CGFloat(self.Light1.hue)/255.0, green: CGFloat(self.Light1.saturation)/255.0, blue: CGFloat(self.Light1.brightness)/255.0, alpha: 1.0)
+                self.grouping2.backgroundColor = UIColor(red: CGFloat(self.Light2.hue)/255.0, green: CGFloat(self.Light2.saturation)/255.0, blue: CGFloat(self.Light2.brightness)/255.0, alpha: 1.0)
+                self.grouping3.backgroundColor = UIColor(red: CGFloat(self.Light3.hue)/255.0, green: CGFloat(self.Light3.saturation)/255.0, blue: CGFloat(self.Light3.brightness)/255.0, alpha: 1.0)
                 
                 DispatchQueue.main.async {
-                    self.grouping1.backgroundColor = UIColor(red: CGFloat(Light1.hue)/255.0, green: CGFloat(Light1.saturation)/255.0, blue: CGFloat(Light1.brightness)/255.0, alpha: 1.0)
-                    self.grouping2.backgroundColor = UIColor(red: CGFloat(Light2.hue)/255.0, green: CGFloat(Light2.saturation)/255.0, blue: CGFloat(Light2.brightness)/255.0, alpha: 1.0)
-                    self.grouping3.backgroundColor = UIColor(red: CGFloat(Light3.hue)/255.0, green: CGFloat(Light3.saturation)/255.0, blue: CGFloat(Light3.brightness)/255.0, alpha: 1.0)
+                    self.grouping1.backgroundColor = UIColor(red: CGFloat(self.Light1.hue)/255.0, green: CGFloat(self.Light1.saturation)/255.0, blue: CGFloat(self.Light1.brightness)/255.0, alpha: 1.0)
+                    self.grouping2.backgroundColor = UIColor(red: CGFloat(self.Light2.hue)/255.0, green: CGFloat(self.Light2.saturation)/255.0, blue: CGFloat(self.Light2.brightness)/255.0, alpha: 1.0)
+                    self.grouping3.backgroundColor = UIColor(red: CGFloat(self.Light3.hue)/255.0, green: CGFloat(self.Light3.saturation)/255.0, blue: CGFloat(self.Light3.brightness)/255.0, alpha: 1.0)
                 }
                //self.grouping1.backgroundColor = UIColor(hue: CGFloat(Light1.hue), saturation: CGFloat(Light1.saturation), brightness: CGFloat(Light1.brightness), alpha: 1.0)
                //self.grouping2.backgroundColor = UIColor(hue: CGFloat(Light2.hue), saturation: CGFloat(Light2.saturation), brightness: CGFloat(Light2.brightness), alpha: 1.0)

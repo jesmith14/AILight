@@ -17,6 +17,8 @@
 		4CCACFAD165692D5008E9D69 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CCACFAC165692D5008E9D69 /* Default-568h@2x.png */; };
 		5E3E132621852A7E00756384 /* ImportPhotoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E3E132521852A7E00756384 /* ImportPhotoViewController.storyboard */; };
 		5E82AA07217FACAC00A01A4A /* SWIFT_MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E82AA06217FACAC00A01A4A /* SWIFT_MainViewController.swift */; };
+		5EC6C4C921B4EBB200C336EA /* ModifyColorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC6C4C821B4EBB200C336EA /* ModifyColorVC.swift */; };
+		5EC6C4CB21B4ED2300C336EA /* ModifyColorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6C4CA21B4ED2300C336EA /* ModifyColorVC.storyboard */; };
 		87194E79184F7FA700576916 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87194E78184F7FA700576916 /* CoreGraphics.framework */; };
 		877BF2C91B4BD4B100118EF2 /* PHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 877BF2C51B4BD4B100118EF2 /* PHAppDelegate.m */; };
 		877BF2CA1B4BD4B100118EF2 /* PHControlLightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 877BF2C71B4BD4B100118EF2 /* PHControlLightsViewController.m */; };
@@ -61,6 +63,8 @@
 		5E3E132521852A7E00756384 /* ImportPhotoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImportPhotoViewController.storyboard; sourceTree = "<group>"; };
 		5E82AA05217FACAB00A01A4A /* HueQuickStartApp-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HueQuickStartApp-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		5E82AA06217FACAC00A01A4A /* SWIFT_MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_MainViewController.swift; sourceTree = "<group>"; };
+		5EC6C4C821B4EBB200C336EA /* ModifyColorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyColorVC.swift; sourceTree = "<group>"; };
+		5EC6C4CA21B4ED2300C336EA /* ModifyColorVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ModifyColorVC.storyboard; sourceTree = "<group>"; };
 		87194E78184F7FA700576916 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		877BF2C41B4BD4B100118EF2 /* PHAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHAppDelegate.h; sourceTree = "<group>"; };
 		877BF2C51B4BD4B100118EF2 /* PHAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHAppDelegate.m; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 				F5AE1A1621B4EE8D00E2377F /* LightCollection.swift */,
 				5E82AA06217FACAC00A01A4A /* SWIFT_MainViewController.swift */,
 				5E3E132521852A7E00756384 /* ImportPhotoViewController.storyboard */,
+				5EC6C4C821B4EBB200C336EA /* ModifyColorVC.swift */,
+				5EC6C4CA21B4ED2300C336EA /* ModifyColorVC.storyboard */,
 				877BF2C81B4BD4B100118EF2 /* PHControlLightsViewController.xib */,
 				4CCACF9D165692D4008E9D69 /* Supporting Files */,
 			);
@@ -334,6 +340,7 @@
 				5E3E132621852A7E00756384 /* ImportPhotoViewController.storyboard in Resources */,
 				877BF2CB1B4BD4B100118EF2 /* PHControlLightsViewController.xib in Resources */,
 				877BF2E11B4BD4EC00118EF2 /* press_smartbridge@2x.png in Resources */,
+				5EC6C4CB21B4ED2300C336EA /* ModifyColorVC.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +407,7 @@
 				F5AE1A1921B4EED500E2377F /* SingleLight.swift in Sources */,
 				F715240718337FD50033689C /* DispatchQueueLogFormatter.m in Sources */,
 				877BF2CA1B4BD4B100118EF2 /* PHControlLightsViewController.m in Sources */,
+				5EC6C4C921B4EBB200C336EA /* ModifyColorVC.swift in Sources */,
 				F715240518337FD50033689C /* DDTTYLogger.m in Sources */,
 				F715240118337FD50033689C /* DDAbstractDatabaseLogger.m in Sources */,
 				F715240318337FD50033689C /* DDFileLogger.m in Sources */,

@@ -10,6 +10,7 @@ import Foundation
 
 
 struct SingleLight {
+    
    var hue : Int
    var saturation : Int
    var brightness : Int
