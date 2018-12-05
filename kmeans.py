@@ -1,3 +1,4 @@
+
 """
 
 To run clustering:
@@ -21,7 +22,6 @@ from colormap import rgb2hex
 
 
 class Cluster(object):
-
     def __init__(self):
         self.pixels = []
         self.centroid = None
@@ -29,7 +29,6 @@ class Cluster(object):
     def addPoint(self, pixel):
         """
         Function to add a pixel to the images total pixel array.
-
         Args:
             pixel: The pixel value to be added.
         Returns: NA
@@ -39,7 +38,6 @@ class Cluster(object):
     def setNewCentroid(self):
         """
         Function to set the new centroid for a cluster.
-        
         Args: NA
         Returns:
             (R, G, B) : The new color for the cluster centroid
@@ -60,7 +58,6 @@ class Cluster(object):
 
 
 class Kmeans(object):
-
     def __init__(self, k=3, max_iterations=5, min_distance=5.0, size=200):
         self.k = k
         self.max_iterations = max_iterations
@@ -71,7 +68,6 @@ class Kmeans(object):
     def run(self, image):
         """
         Function to create the kmeans clusters for the image.
-        
         Args: 
             image: Image object to run kmeans on
         Returns:
@@ -112,7 +108,6 @@ class Kmeans(object):
         """
         Function to assign cluster values by comparing distance between 
         pixel value and current cluster centroid.
-        
         Args: 
             pixel : the pixel that is being compared to the current centroid
         Returns: NA
@@ -129,7 +124,6 @@ class Kmeans(object):
     def calcDistance(self, a, b):
         """
         Function that calculates the distance between two pixels
-        
         Args: 
             a : first pixel value
             b : second pixel value
@@ -143,7 +137,6 @@ class Kmeans(object):
         """
         Function that indicates when clustering has finished and pixels
         have all been accounted for.
-        
         Args: 
             iterations : current amount of iterations that clustering has done
         Returns: 
@@ -164,7 +157,6 @@ class Kmeans(object):
             return False
 
         return True
-    
     def showCentroidColours(self):
         for cluster in self.clusters:
             rgb = []
@@ -177,7 +169,6 @@ class Kmeans(object):
     def getClusterColorsAsHex(self):
         """
         Function that calculates the hex values of the final cluster centroids
-        
         Args: NA
         Returns: 
             array : String values for the hex of the cluster centroids
@@ -191,10 +182,9 @@ class Kmeans(object):
             tup = tuple(centroid)
             totalColors.append(rgb2hex(tup[0], tup[1], tup[2]))
             self.weights[i] = (0, tup)
-            i = i+1
+            i = i + 1
         print("HEX COLORS: ", totalColors)
-        return(totalColors)
-
+        return (totalColors)
 
     # This function creates the overall occurences for each cluster centroid color
     # after altering the pixels in the image to match their corresponding centroid
@@ -204,7 +194,6 @@ class Kmeans(object):
         by comparing a pixel to its associated centroid and aggregating the total
         occurences of each centroid. Modifies the first element of the tuple in the 
         'weights' value of the kMeans object.
-        
         Args: NA
         Returns: NA
         """
@@ -236,14 +225,12 @@ class Kmeans(object):
                 # colourMap.show()
                  
 
-
     # this function creates the tuple array of colors and their corresponding final weights
     def getWeightedColors(self):
         """
         Function that calculates the final weights of each cluster centroid.
         Calls the createWeights() function to aggregate the total occurences of pixels
         and then averages the values to determine percent weight of each centroid.
-        
         Args: NA
         Returns: 
             array : tuples for each centroid in the form (weight, color) where color is an (R, G, B) value
@@ -257,20 +244,28 @@ class Kmeans(object):
             self.weights[i] = (adjusted_weight, color)
             i = i + 1
         print('COLOR WEIGHTS: ', self.weights)
-        return(self.weights)
+        return (self.weights)
 
 def cmp(a, b):
     """
     Function that compares two tuples.
-    
     Args: 
         a : first tuple
         b : second tuple
     Returns: 
         integer : -1 if a is less than b, 1 if a is greater than b, 0 if they are the same
     """
-    return (a > b) - (a < b) 
+    return (a > b) - (a < b)
 
+def mainRun():
+    # Change this to the string of the picture we are going to constantly override from Swift side
+    image = Image.open("uploadedImage.jpg")
+    k = Kmeans()
+    k.run(image)
+    k.getClusterColorsAsHex()
+    weights = k.getWeightedColors()
+    k.showCentroidColours()
+    return weights
 
 def main():
     # Change this to the string of the picture we are going to constantly override from Swift side
@@ -280,6 +275,7 @@ def main():
     k.getClusterColorsAsHex()
     k.getWeightedColors()
     k.showCentroidColours()
+
 
 if __name__ == "__main__":
     main()

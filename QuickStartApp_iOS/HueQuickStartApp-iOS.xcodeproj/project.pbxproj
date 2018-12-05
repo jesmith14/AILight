@@ -15,6 +15,10 @@
 		4CCACFA9165692D5008E9D69 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CCACFA8165692D5008E9D69 /* Default.png */; };
 		4CCACFAB165692D5008E9D69 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CCACFAA165692D5008E9D69 /* Default@2x.png */; };
 		4CCACFAD165692D5008E9D69 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CCACFAC165692D5008E9D69 /* Default-568h@2x.png */; };
+		5E3E132621852A7E00756384 /* ImportPhotoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E3E132521852A7E00756384 /* ImportPhotoViewController.storyboard */; };
+		5E82AA07217FACAC00A01A4A /* SWIFT_MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E82AA06217FACAC00A01A4A /* SWIFT_MainViewController.swift */; };
+		5EC6C4C921B4EBB200C336EA /* ModifyColorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC6C4C821B4EBB200C336EA /* ModifyColorVC.swift */; };
+		5EC6C4CB21B4ED2300C336EA /* ModifyColorVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EC6C4CA21B4ED2300C336EA /* ModifyColorVC.storyboard */; };
 		87194E79184F7FA700576916 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87194E78184F7FA700576916 /* CoreGraphics.framework */; };
 		877BF2C91B4BD4B100118EF2 /* PHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 877BF2C51B4BD4B100118EF2 /* PHAppDelegate.m */; };
 		877BF2CA1B4BD4B100118EF2 /* PHControlLightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 877BF2C71B4BD4B100118EF2 /* PHControlLightsViewController.m */; };
@@ -27,6 +31,11 @@
 		877BF2DF1B4BD4EC00118EF2 /* PHBridgeSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 877BF2D61B4BD4EC00118EF2 /* PHBridgeSelectionViewController.xib */; };
 		877BF2E01B4BD4EC00118EF2 /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 877BF2D81B4BD4EC00118EF2 /* press_smartbridge.png */; };
 		877BF2E11B4BD4EC00118EF2 /* press_smartbridge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 877BF2D91B4BD4EC00118EF2 /* press_smartbridge@2x.png */; };
+		CE5923AE1A78AF9894900A87 /* Pods_HueQuickStartApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142969533EEF5202ADD101D8 /* Pods_HueQuickStartApp_iOS.framework */; };
+		D2A7155A6FC2F4314E735632 /* Pods_HueQuickStartApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B2B6D7328DA3D2C65207073 /* Pods_HueQuickStartApp_iOS.framework */; };
+		E21164991C38485961E31EF8 /* Pods_HueQuickStartApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF84A46041F50B5C26983EBD /* Pods_HueQuickStartApp_iOS.framework */; };
+		F5AE1A1721B4EE8D00E2377F /* LightCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE1A1621B4EE8D00E2377F /* LightCollection.swift */; };
+		F5AE1A1921B4EED500E2377F /* SingleLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE1A1821B4EED500E2377F /* SingleLight.swift */; };
 		F715240118337FD50033689C /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F71523F318337FD50033689C /* DDAbstractDatabaseLogger.m */; };
 		F715240218337FD50033689C /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F71523F518337FD50033689C /* DDASLLogger.m */; };
 		F715240318337FD50033689C /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F71523F718337FD50033689C /* DDFileLogger.m */; };
@@ -37,7 +46,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		142969533EEF5202ADD101D8 /* Pods_HueQuickStartApp_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HueQuickStartApp_iOS.framework; path = "../../../../../../../../../Users/monicaravichandran/Library/Developer/Xcode/DerivedData/HueQuickStartApp-iOS-ghnohsnrbrpefvaqhxkfkhvolpwa/Build/Products/Debug-iphoneos/Pods_HueQuickStartApp_iOS.framework"; sourceTree = SDKROOT; };
 		166943141ABC300800BF8B37 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
+		1FF50F1D1F1EA05BCAA1059C /* Pods-HueQuickStartApp-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HueQuickStartApp-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-HueQuickStartApp-iOS/Pods-HueQuickStartApp-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		4CCACF92165692D4008E9D69 /* HueQuickStartApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HueQuickStartApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CCACF96165692D4008E9D69 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4CCACF98165692D4008E9D69 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -48,6 +59,12 @@
 		4CCACFA8165692D5008E9D69 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4CCACFAA165692D5008E9D69 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4CCACFAC165692D5008E9D69 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5B2B6D7328DA3D2C65207073 /* Pods_HueQuickStartApp_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HueQuickStartApp_iOS.framework; path = "../../../../../../../../../Users/monicaravichandran/Library/Developer/Xcode/DerivedData/HueQuickStartApp-iOS-ghnohsnrbrpefvaqhxkfkhvolpwa/Build/Products/Debug-iphoneos/Pods_HueQuickStartApp_iOS.framework"; sourceTree = SDKROOT; };
+		5E3E132521852A7E00756384 /* ImportPhotoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImportPhotoViewController.storyboard; sourceTree = "<group>"; };
+		5E82AA05217FACAB00A01A4A /* HueQuickStartApp-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HueQuickStartApp-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		5E82AA06217FACAC00A01A4A /* SWIFT_MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_MainViewController.swift; sourceTree = "<group>"; };
+		5EC6C4C821B4EBB200C336EA /* ModifyColorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyColorVC.swift; sourceTree = "<group>"; };
+		5EC6C4CA21B4ED2300C336EA /* ModifyColorVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ModifyColorVC.storyboard; sourceTree = "<group>"; };
 		87194E78184F7FA700576916 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		877BF2C41B4BD4B100118EF2 /* PHAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHAppDelegate.h; sourceTree = "<group>"; };
 		877BF2C51B4BD4B100118EF2 /* PHAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHAppDelegate.m; sourceTree = "<group>"; };
@@ -65,6 +82,10 @@
 		877BF2D61B4BD4EC00118EF2 /* PHBridgeSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHBridgeSelectionViewController.xib; sourceTree = "<group>"; };
 		877BF2D81B4BD4EC00118EF2 /* press_smartbridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = press_smartbridge.png; sourceTree = "<group>"; };
 		877BF2D91B4BD4EC00118EF2 /* press_smartbridge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "press_smartbridge@2x.png"; sourceTree = "<group>"; };
+		CF1E07A86B41A4BEA57AFD4F /* Pods-HueQuickStartApp-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HueQuickStartApp-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HueQuickStartApp-iOS/Pods-HueQuickStartApp-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		CF84A46041F50B5C26983EBD /* Pods_HueQuickStartApp_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HueQuickStartApp_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5AE1A1621B4EE8D00E2377F /* LightCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightCollection.swift; sourceTree = "<group>"; };
+		F5AE1A1821B4EED500E2377F /* SingleLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleLight.swift; sourceTree = "<group>"; };
 		F71523F218337FD50033689C /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		F71523F318337FD50033689C /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
 		F71523F418337FD50033689C /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
@@ -90,6 +111,9 @@
 				4CCACF97165692D4008E9D69 /* UIKit.framework in Frameworks */,
 				166943151ABC300800BF8B37 /* HueSDK_iOS.framework in Frameworks */,
 				4CCACF99165692D4008E9D69 /* Foundation.framework in Frameworks */,
+				CE5923AE1A78AF9894900A87 /* Pods_HueQuickStartApp_iOS.framework in Frameworks */,
+				D2A7155A6FC2F4314E735632 /* Pods_HueQuickStartApp_iOS.framework in Frameworks */,
+				E21164991C38485961E31EF8 /* Pods_HueQuickStartApp_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,10 +123,12 @@
 		4CCACF87165692D4008E9D69 = {
 			isa = PBXGroup;
 			children = (
+				F57E33B32189750C00FE4A6A /* Dependencies */,
 				877BF2CC1B4BD4EC00118EF2 /* SDKWizard */,
 				4CCACF9C165692D4008E9D69 /* HueQuickStartApp-iOS */,
 				4CCACF95165692D4008E9D69 /* Frameworks */,
 				4CCACF93165692D4008E9D69 /* Products */,
+				7A3CBA2114EC843EFE754DC9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +148,9 @@
 				F71523F118337FD50033689C /* Lumberjack */,
 				4CCACF96165692D4008E9D69 /* UIKit.framework */,
 				4CCACF98165692D4008E9D69 /* Foundation.framework */,
+				142969533EEF5202ADD101D8 /* Pods_HueQuickStartApp_iOS.framework */,
+				5B2B6D7328DA3D2C65207073 /* Pods_HueQuickStartApp_iOS.framework */,
+				CF84A46041F50B5C26983EBD /* Pods_HueQuickStartApp_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,10 +158,17 @@
 		4CCACF9C165692D4008E9D69 /* HueQuickStartApp-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				5E82AA05217FACAB00A01A4A /* HueQuickStartApp-iOS-Bridging-Header.h */,
 				877BF2C41B4BD4B100118EF2 /* PHAppDelegate.h */,
 				877BF2C51B4BD4B100118EF2 /* PHAppDelegate.m */,
 				877BF2C61B4BD4B100118EF2 /* PHControlLightsViewController.h */,
+				F5AE1A1821B4EED500E2377F /* SingleLight.swift */,
 				877BF2C71B4BD4B100118EF2 /* PHControlLightsViewController.m */,
+				F5AE1A1621B4EE8D00E2377F /* LightCollection.swift */,
+				5E82AA06217FACAC00A01A4A /* SWIFT_MainViewController.swift */,
+				5E3E132521852A7E00756384 /* ImportPhotoViewController.storyboard */,
+				5EC6C4C821B4EBB200C336EA /* ModifyColorVC.swift */,
+				5EC6C4CA21B4ED2300C336EA /* ModifyColorVC.storyboard */,
 				877BF2C81B4BD4B100118EF2 /* PHControlLightsViewController.xib */,
 				4CCACF9D165692D4008E9D69 /* Supporting Files */,
 			);
@@ -151,6 +187,15 @@
 				4CCACFAC165692D5008E9D69 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7A3CBA2114EC843EFE754DC9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CF1E07A86B41A4BEA57AFD4F /* Pods-HueQuickStartApp-iOS.debug.xcconfig */,
+				1FF50F1D1F1EA05BCAA1059C /* Pods-HueQuickStartApp-iOS.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		877BF2CC1B4BD4EC00118EF2 /* SDKWizard */ = {
@@ -185,6 +230,13 @@
 				877BF2D91B4BD4EC00118EF2 /* press_smartbridge@2x.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		F57E33B32189750C00FE4A6A /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Dependencies;
 			sourceTree = "<group>";
 		};
 		F71523F118337FD50033689C /* Lumberjack */ = {
@@ -224,9 +276,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4CCACFB0165692D5008E9D69 /* Build configuration list for PBXNativeTarget "HueQuickStartApp-iOS" */;
 			buildPhases = (
+				30975678FA74D16313C12F54 /* [CP] Check Pods Manifest.lock */,
 				4CCACF8E165692D4008E9D69 /* Sources */,
 				4CCACF8F165692D4008E9D69 /* Frameworks */,
 				4CCACF90165692D4008E9D69 /* Resources */,
+				F38591216D5FE7CB17DA4C7C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -248,7 +302,8 @@
 				ORGANIZATIONNAME = Philips;
 				TargetAttributes = {
 					4CCACF91165692D4008E9D69 = {
-						DevelopmentTeam = VKT95LEUQ9;
+						DevelopmentTeam = 7F72R928UK;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -282,12 +337,61 @@
 				4CCACFAB165692D5008E9D69 /* Default@2x.png in Resources */,
 				4CCACFAD165692D5008E9D69 /* Default-568h@2x.png in Resources */,
 				877BF2DF1B4BD4EC00118EF2 /* PHBridgeSelectionViewController.xib in Resources */,
+				5E3E132621852A7E00756384 /* ImportPhotoViewController.storyboard in Resources */,
 				877BF2CB1B4BD4B100118EF2 /* PHControlLightsViewController.xib in Resources */,
 				877BF2E11B4BD4EC00118EF2 /* press_smartbridge@2x.png in Resources */,
+				5EC6C4CB21B4ED2300C336EA /* ModifyColorVC.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		30975678FA74D16313C12F54 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HueQuickStartApp-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F38591216D5FE7CB17DA4C7C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HueQuickStartApp-iOS/Pods-HueQuickStartApp-iOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HueQuickStartApp-iOS/Pods-HueQuickStartApp-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4CCACF8E165692D4008E9D69 /* Sources */ = {
@@ -295,11 +399,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F715240418337FD50033689C /* DDLog.m in Sources */,
+				5E82AA07217FACAC00A01A4A /* SWIFT_MainViewController.swift in Sources */,
 				F715240218337FD50033689C /* DDASLLogger.m in Sources */,
+				F5AE1A1721B4EE8D00E2377F /* LightCollection.swift in Sources */,
 				877BF2C91B4BD4B100118EF2 /* PHAppDelegate.m in Sources */,
 				4CCACFA3165692D5008E9D69 /* main.m in Sources */,
+				F5AE1A1921B4EED500E2377F /* SingleLight.swift in Sources */,
 				F715240718337FD50033689C /* DispatchQueueLogFormatter.m in Sources */,
 				877BF2CA1B4BD4B100118EF2 /* PHControlLightsViewController.m in Sources */,
+				5EC6C4C921B4EBB200C336EA /* ModifyColorVC.swift in Sources */,
 				F715240518337FD50033689C /* DDTTYLogger.m in Sources */,
 				F715240118337FD50033689C /* DDAbstractDatabaseLogger.m in Sources */,
 				F715240318337FD50033689C /* DDFileLogger.m in Sources */,
@@ -327,6 +435,7 @@
 		4CCACFAE165692D5008E9D69 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -337,6 +446,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -359,6 +469,7 @@
 		4CCACFAF165692D5008E9D69 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -368,6 +479,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -383,10 +495,12 @@
 		};
 		4CCACFB1165692D5008E9D69 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF1E07A86B41A4BEA57AFD4F /* Pods-HueQuickStartApp-iOS.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = VKT95LEUQ9;
+				DEVELOPMENT_TEAM = 7F72R928UK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					../,
@@ -397,12 +511,16 @@
 				GCC_PREFIX_HEADER = "HueQuickStartApp-iOS/HueQuickStartApp-iOS-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/HueQuickStartApp-iOS/HueQuickStartApp-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.philips.lighting.hue.sdk.HueQuickStartApp-iOS.Landon";
 				PRODUCT_NAME = "HueQuickStartApp-iOS";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HueQuickStartApp-iOS/HueQuickStartApp-iOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -410,10 +528,12 @@
 		};
 		4CCACFB2165692D5008E9D69 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FF50F1D1F1EA05BCAA1059C /* Pods-HueQuickStartApp-iOS.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = VKT95LEUQ9;
+				DEVELOPMENT_TEAM = 7F72R928UK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					../,
@@ -424,12 +544,15 @@
 				GCC_PREFIX_HEADER = "HueQuickStartApp-iOS/HueQuickStartApp-iOS-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/HueQuickStartApp-iOS/HueQuickStartApp-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.philips.lighting.hue.sdk.HueQuickStartApp-iOS.Landon";
 				PRODUCT_NAME = "HueQuickStartApp-iOS";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HueQuickStartApp-iOS/HueQuickStartApp-iOS-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
