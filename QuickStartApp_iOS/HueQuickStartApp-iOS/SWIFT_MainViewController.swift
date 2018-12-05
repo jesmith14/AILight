@@ -54,8 +54,30 @@ import Alamofire
             }
         }
     }
-    
     @IBAction func didTapImportPhoto(_ sender: UIButton) {
+        let req = NSMutableURLRequest(url: NSURL(string:"http://0.0.0.0:5000/startNeuralNet")! as URL)
+        let ses = URLSession.shared
+        req.httpMethod = "POST"
+        req.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+        req.setValue("test", forHTTPHeaderField: "X-FileName")
+        let task = ses.dataTask(with: req as URLRequest, completionHandler: { data, response, error in
+            guard error == nil else {
+                return
+            }
+            guard let data = data else {
+                return
+            }
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                    print(json)
+                }
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        })
+        
+        task.resume()
+        
         
         imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         present(imagePicker, animated: true,completion: nil)
@@ -113,7 +135,6 @@ extension SWIFT_MainViewController{
             guard error == nil else {
                 return
             }
-                
             guard let data = data else {
                 return
             }
@@ -123,7 +144,7 @@ extension SWIFT_MainViewController{
                    print(json)
 //                        // handle json...
                }
-               let decoder = JSONDecoder()
+               /*let decoder = JSONDecoder()
                let lightCollection = try decoder.decode(LightCollection.self, from: data)
                 print("DATA: ")
                 print(data)
@@ -142,7 +163,7 @@ extension SWIFT_MainViewController{
                 }
                //self.grouping1.backgroundColor = UIColor(hue: CGFloat(Light1.hue), saturation: CGFloat(Light1.saturation), brightness: CGFloat(Light1.brightness), alpha: 1.0)
                //self.grouping2.backgroundColor = UIColor(hue: CGFloat(Light2.hue), saturation: CGFloat(Light2.saturation), brightness: CGFloat(Light2.brightness), alpha: 1.0)
-               //self.grouping3.backgroundColor = UIColor(hue: CGFloat(Light3.hue), saturation: CGFloat(Light3.saturation), brightness: CGFloat(Light3.brightness), alpha: 1.0)
+               //self.grouping3.backgroundColor = UIColor(hue: CGFloat(Light3.hue), saturation: CGFloat(Light3.saturation), brightness: CGFloat(Light3.brightness), alpha: 1.0)*/
                
             } catch let error {
                     print(error.localizedDescription)
