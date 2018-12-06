@@ -73,6 +73,7 @@ import Alamofire
             }
         }
     }
+   
     @IBAction func didTapImportPhoto(_ sender: UIButton) {
         let req = NSMutableURLRequest(url: NSURL(string:"http://0.0.0.0:5000/startNeuralNet")! as URL)
         let ses = URLSession.shared
@@ -191,7 +192,7 @@ extension SWIFT_MainViewController{
                    print(json)
 //                        // handle json...
                }
-               /*let decoder = JSONDecoder()
+               let decoder = JSONDecoder()
                let lightCollection = try decoder.decode(LightCollection.self, from: data)
                
                let kmean = lightCollection.kmeans
@@ -217,8 +218,6 @@ extension SWIFT_MainViewController{
                     self.grouping2.backgroundColor = UIColor(hue: self.Light2.hue, saturation: self.Light2.saturation, brightness: self.Light2.brightness, alpha: 1.0)
                     self.grouping3.backgroundColor = UIColor(hue: self.Light3.hue, saturation: self.Light3.saturation, brightness: self.Light3.brightness, alpha: 1.0)
                 }
-<<<<<<< HEAD
-*/
                
             } catch let error {
                     print(error.localizedDescription)
