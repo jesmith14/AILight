@@ -23,7 +23,7 @@ class ModifyColorVC: UIViewController {
     
     var source: SWIFT_MainViewController?
     
-    var light : SingleLight = SingleLight(hue: 360, saturation: 0, brightness: 0)
+    var light : SingleLight = SingleLight(hue: 1, saturation: 1, brightness: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,20 +75,6 @@ class ModifyColorVC: UIViewController {
          break;
       default:
          print("Nothing happens")
-      }
-   }
-   
-   
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      
-      if segue.identifier == "changeColor" {
-         let mainVC = segue.destination as! SWIFT_MainViewController
-//         mainVC.callback = { result in
-//            print(result)
-//            mainVC.handleLightChange(lightCollection: light)
-//            // do something with the result
-//         }
-         mainVC.handleLightChange(newLight: light)
       }
    }
     

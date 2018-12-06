@@ -25,15 +25,21 @@ import Alamofire
     var currentImage : UIImage!
     var grouping : Int = 0
 
+    var kmeansArray : [[Float]] = [[0,0,0,0],[0,0,0,0],[0,0,0,0]]
+    var givenHSB : [Float] = [0,0,0]
+    var userHSB : [Float] = [0,0,0]
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
+        
     }
    
-    func getHueValue(hueValue: Int) -> Int {
+    func getHueValue(hueValue: CGFloat) -> Int {
         
-        return (hueValue / 360) * 65535
+        return Int(hueValue * 65535)
     }
     
     func generateLightScheme(){
@@ -41,38 +47,34 @@ import Alamofire
         let cache = PHBridgeResourcesReader.readBridgeResourcesCache()!
         
         let bridgeSendAPI = PHBridgeSendAPI()
-        
+
+        var currentLight = 1
         for light in cache.lights.values {
             
             if light is PHLight {
                 let lightState = PHLightState()
                 
-                lightState.hue = 360
-                lightState.saturation = 100
-                lightState.brightness = 100
+                if currentLight == 1 {
+                    lightState.hue = NSNumber(value: Int(getHueValue(hueValue: Light1.hue)))
+                    lightState.saturation = NSNumber(value: Int(Float(Light1.saturation)*254))
+                    lightState.brightness = NSNumber(value: Int(Float(Light1.brightness)*254))
+                } else if currentLight == 2 {
+                    lightState.hue = NSNumber(value: Int(getHueValue(hueValue: Light2.hue)))
+                    lightState.saturation = NSNumber(value: Int(Float(Light2.saturation)*254))
+                    lightState.brightness = NSNumber(value: Int(Float(Light2.brightness)*254))
+                } else {
+                    lightState.hue = NSNumber(value: Int(getHueValue(hueValue: Light3.hue)))
+                    lightState.saturation = NSNumber(value: Int(Float(Light3.saturation)*254))
+                    lightState.brightness = NSNumber(value: Int(Float(Light3.brightness)*254))
+                }
+                
+                currentLight += 1
                 
                 // Send lightstate to light
                 bridgeSendAPI.updateLightState(forId: (light as AnyObject).identifier, with: lightState, completionHandler: nil)
             }
         }
     }
-   
-   func handleLightChange(newLight: SingleLight) {
-      print("CALLING HANDLE LIGHT CHANGE ", grouping)
-      
-      if self.grouping == 1 {
-         Light1 = SingleLight(hue: newLight.hue, saturation: newLight.saturation, brightness: newLight.brightness)
-         self.grouping1.backgroundColor = UIColor(hue: self.Light1.hue, saturation: self.Light1.saturation, brightness: self.Light1.brightness, alpha: 1.0)
-      }
-      else if self.grouping == 2 {
-         Light2 = SingleLight(hue: newLight.hue, saturation: newLight.saturation, brightness: newLight.brightness)
-         self.grouping2.backgroundColor = UIColor(hue: self.Light2.hue, saturation: self.Light2.saturation, brightness: self.Light2.brightness, alpha: 1.0)
-      }
-      else {
-         Light3 = SingleLight(hue: newLight.hue, saturation: newLight.saturation, brightness: newLight.brightness)
-         self.grouping3.backgroundColor = UIColor(hue: self.Light3.hue, saturation: self.Light3.saturation, brightness: self.Light3.brightness, alpha: 1.0)
-      }
-   }
     
     @IBAction func didTapImportPhoto(_ sender: UIButton) {
         
@@ -85,18 +87,20 @@ import Alamofire
         generateLightScheme()
     }
    
+    @IBAction func didTapGoBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
    
    @IBAction func unwindFromColorPicker(_ sender: UIStoryboardSegue){
       if sender.source is ModifyColorVC {
          if let colorPickerVC = sender.source as? ModifyColorVC {
-            print("Unwinding********")
             self.handleLightChange(newLight: colorPickerVC.light)
          }
       }
    }
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      print("PREPING FOR SEGUE")
       if segue.identifier == "grouping1" {
          self.grouping = 1
       }
@@ -107,34 +111,23 @@ import Alamofire
          self.grouping = 3
       }
    }
-   
     
-//    @IBAction func didTapGrouping1(_ sender: Any) {
-//        let vc = UIStoryboard(name: "ModifyColorVC", bundle: nil).instantiateViewController(withIdentifier: "ModifyColorVC") as? ModifyColorVC
-//
-//        vc!.light = Light1
-//        vc!.grouping = 1
-//
-//        self.present(vc!, animated: true, completion: nil)
-//    }
-//
-//    @IBAction func didTapGrouping2(_ sender: Any) {
-//        let vc = UIStoryboard(name: "ModifyColorVC", bundle: nil).instantiateViewController(withIdentifier: "ModifyColorVC") as? ModifyColorVC
-//
-//        vc!.light = Light2
-//        vc!.grouping = 2
-//
-//        self.present(vc!, animated: true, completion: nil)
-//    }
-//
-//    @IBAction func didTapGrouping3(_ sender: Any) {
-//        let vc = UIStoryboard(name: "ModifyColorVC", bundle: nil).instantiateViewController(withIdentifier: "ModifyColorVC") as? ModifyColorVC
-//
-//        vc!.light = Light3
-//        vc!.grouping = 3
-//
-//        self.present(vc!, animated: true, completion: nil)
-//    }
+    func handleLightChange(newLight: SingleLight) {
+        print("CALLING HANDLE LIGHT CHANGE ", grouping)
+        
+        if self.grouping == 1 {
+        Light1 = SingleLight(hue: newLight.hue, saturation: newLight.saturation, brightness: newLight.brightness)
+        self.grouping1.backgroundColor = UIColor(hue: self.Light1.hue, saturation: self.Light1.saturation, brightness: self.Light1.brightness, alpha: 1.0)
+        }
+        else if self.grouping == 2 {
+        Light2 = SingleLight(hue: newLight.hue, saturation: newLight.saturation, brightness: newLight.brightness)
+        self.grouping2.backgroundColor = UIColor(hue: self.Light2.hue, saturation: self.Light2.saturation, brightness: self.Light2.brightness, alpha: 1.0)
+        }
+        else {
+        Light3 = SingleLight(hue: newLight.hue, saturation: newLight.saturation, brightness: newLight.brightness)
+        self.grouping3.backgroundColor = UIColor(hue: self.Light3.hue, saturation: self.Light3.saturation, brightness: self.Light3.brightness, alpha: 1.0)
+        }
+    }
    
 }
 
