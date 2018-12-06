@@ -25,11 +25,9 @@ import Alamofire
     var currentImage : UIImage!
     var grouping : Int = 0
 
-    var kmeansArray : [[Float]] = [[0,0,0,0],[0,0,0,0],[0,0,0,0]]
-    var givenHSB : [Float] = [0,0,0]
-    var userHSB : [Float] = [0,0,0]
-    
-    
+    var kmeansArray : [[Float]] = [[0,0,0,0], [0,0,0,0], [0,0,0,0]]
+    var givenHSB : [[Float]] = [[0,0,0], [0,0,0], [0,0,0]]
+    var userHSB : [[Float]] = [[0,0,0], [0,0,0], [0,0,0]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,10 +166,15 @@ extension SWIFT_MainViewController{
                }
                let decoder = JSONDecoder()
                let lightCollection = try decoder.decode(LightCollection.self, from: data)
-                
-                let hsb1 = self.rgbToHue(r: CGFloat(lightCollection.color1[0])/255, g: CGFloat(lightCollection.color1[1])/255, b: CGFloat(lightCollection.color1[2])/255)
-                let hsb2 = self.rgbToHue(r: CGFloat(lightCollection.color2[0])/255, g: CGFloat(lightCollection.color2[1])/255, b: CGFloat(lightCollection.color2[2])/255)
-                let hsb3 = self.rgbToHue(r: CGFloat(lightCollection.color3[0])/255, g: CGFloat(lightCollection.color3[1])/255, b: CGFloat(lightCollection.color3[2])/255)
+               
+               let kmean = lightCollection.kmeans
+               let hsbGiven = lightCollection.colors
+               self.kmeansArray = [[kmean[0], kmean[1], kmean[2], kmean[3]], [kmean[4], kmean[5], kmean[6], kmean[7]], [kmean[8], kmean[9], kmean[10], kmean[11]]]
+               self.givenHSB = [[hsbGiven[0], hsbGiven[1], 100], [hsbGiven[3], hsbGiven[4], 100], [hsbGiven[6], hsbGiven[7], 100]]
+               
+               let hsb1 = self.rgbToHue(r: CGFloat(lightCollection.colors[0])/255, g: CGFloat(lightCollection.colors[1])/255, b: 100/255)
+                let hsb2 = self.rgbToHue(r: CGFloat(lightCollection.colors[3])/255, g: CGFloat(lightCollection.colors[4])/255, b: 100/255)
+                let hsb3 = self.rgbToHue(r: CGFloat(lightCollection.colors[6])/255, g: CGFloat(lightCollection.colors[7])/255, b: 100/255)
                 
                 print("hsb1")
                 print(hsb1.h)
