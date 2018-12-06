@@ -99,14 +99,20 @@ import Alamofire
    }
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+      let vc = segue.destination as? ModifyColorVC
+    
       if segue.identifier == "grouping1" {
-         self.grouping = 1
+        self.grouping = 1
+        vc?.light = Light1
       }
       else if segue.identifier == "grouping2" {
-         self.grouping = 2
+        self.grouping = 2
+        vc?.light = Light2
       }
       else {
-         self.grouping = 3
+        self.grouping = 3
+        vc?.light = Light3
       }
    }
     
