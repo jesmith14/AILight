@@ -71,19 +71,27 @@ import Alamofire
     }
     
     @IBAction func didTapGrouping1(_ sender: Any) {
-        let vc = ModifyColorVC()
+        let vc = UIStoryboard(name: "ModifyColorVC", bundle: nil).instantiateViewController(withIdentifier: "ModifyColorVC") as? ModifyColorVC
         
-        vc.hue = 360
-        vc.saturation = 100
-        vc.brightness = 100
+        vc!.light = Light1
         
-        self.present(vc, animated: true, completion: nil)
+        self.present(vc!, animated: true, completion: nil)
     }
     
     @IBAction func didTapGrouping2(_ sender: Any) {
+        let vc = UIStoryboard(name: "ModifyColorVC", bundle: nil).instantiateViewController(withIdentifier: "ModifyColorVC") as? ModifyColorVC
+        
+        vc!.light = Light2
+        
+        self.present(vc!, animated: true, completion: nil)
     }
     
     @IBAction func didTapGrouping3(_ sender: Any) {
+        let vc = UIStoryboard(name: "ModifyColorVC", bundle: nil).instantiateViewController(withIdentifier: "ModifyColorVC") as? ModifyColorVC
+        
+        vc!.light = Light3
+        
+        self.present(vc!, animated: true, completion: nil)
     }
     
 }
@@ -125,24 +133,26 @@ extension SWIFT_MainViewController{
                }
                let decoder = JSONDecoder()
                let lightCollection = try decoder.decode(LightCollection.self, from: data)
-                print("DATA: ")
-                print(data)
-                self.Light1 = SingleLight(hue: lightCollection.color1[0], saturation: lightCollection.color1[1], brightness: lightCollection.color1[2])
-                self.Light2 = SingleLight(hue: lightCollection.color2[0], saturation: lightCollection.color2[1], brightness: lightCollection.color2[2])
-                self.Light3 = SingleLight(hue: lightCollection.color3[0], saturation: lightCollection.color3[1], brightness: lightCollection.color3[2])
-
-                self.grouping1.backgroundColor = UIColor(red: CGFloat(self.Light1.hue)/255.0, green: CGFloat(self.Light1.saturation)/255.0, blue: CGFloat(self.Light1.brightness)/255.0, alpha: 1.0)
-                self.grouping2.backgroundColor = UIColor(red: CGFloat(self.Light2.hue)/255.0, green: CGFloat(self.Light2.saturation)/255.0, blue: CGFloat(self.Light2.brightness)/255.0, alpha: 1.0)
-                self.grouping3.backgroundColor = UIColor(red: CGFloat(self.Light3.hue)/255.0, green: CGFloat(self.Light3.saturation)/255.0, blue: CGFloat(self.Light3.brightness)/255.0, alpha: 1.0)
+                
+                let hsb1 = self.rgbToHue(r: CGFloat(lightCollection.color1[0])/255, g: CGFloat(lightCollection.color1[1])/255, b: CGFloat(lightCollection.color1[2])/255)
+                let hsb2 = self.rgbToHue(r: CGFloat(lightCollection.color2[0])/255, g: CGFloat(lightCollection.color2[1])/255, b: CGFloat(lightCollection.color2[2])/255)
+                let hsb3 = self.rgbToHue(r: CGFloat(lightCollection.color3[0])/255, g: CGFloat(lightCollection.color3[1])/255, b: CGFloat(lightCollection.color3[2])/255)
+                
+                print("hsb1")
+                print(hsb1.h)
+                print(hsb1.s)
+                print(hsb1.b)
+                
+                self.Light1 = SingleLight(hue: hsb1.h, saturation: hsb1.s, brightness: hsb1.b)
+                self.Light2 = SingleLight(hue: hsb2.h, saturation: hsb2.s, brightness: hsb2.b)
+                self.Light3 = SingleLight(hue: hsb3.h, saturation: hsb3.s, brightness: hsb3.b)
                 
                 DispatchQueue.main.async {
-                    self.grouping1.backgroundColor = UIColor(red: CGFloat(self.Light1.hue)/255.0, green: CGFloat(self.Light1.saturation)/255.0, blue: CGFloat(self.Light1.brightness)/255.0, alpha: 1.0)
-                    self.grouping2.backgroundColor = UIColor(red: CGFloat(self.Light2.hue)/255.0, green: CGFloat(self.Light2.saturation)/255.0, blue: CGFloat(self.Light2.brightness)/255.0, alpha: 1.0)
-                    self.grouping3.backgroundColor = UIColor(red: CGFloat(self.Light3.hue)/255.0, green: CGFloat(self.Light3.saturation)/255.0, blue: CGFloat(self.Light3.brightness)/255.0, alpha: 1.0)
+                    self.grouping1.backgroundColor = UIColor(hue: self.Light1.hue, saturation: self.Light1.saturation, brightness: self.Light1.brightness, alpha: 1.0)
+                    self.grouping2.backgroundColor = UIColor(hue: self.Light2.hue, saturation: self.Light2.saturation, brightness: self.Light2.brightness, alpha: 1.0)
+                    self.grouping3.backgroundColor = UIColor(hue: self.Light3.hue, saturation: self.Light3.saturation, brightness: self.Light3.brightness, alpha: 1.0)
                 }
-               //self.grouping1.backgroundColor = UIColor(hue: CGFloat(Light1.hue), saturation: CGFloat(Light1.saturation), brightness: CGFloat(Light1.brightness), alpha: 1.0)
-               //self.grouping2.backgroundColor = UIColor(hue: CGFloat(Light2.hue), saturation: CGFloat(Light2.saturation), brightness: CGFloat(Light2.brightness), alpha: 1.0)
-               //self.grouping3.backgroundColor = UIColor(hue: CGFloat(Light3.hue), saturation: CGFloat(Light3.saturation), brightness: CGFloat(Light3.brightness), alpha: 1.0)
+               
                
             } catch let error {
                     print(error.localizedDescription)
@@ -151,4 +161,30 @@ extension SWIFT_MainViewController{
         
         task.resume()
     }
+    
+    func rgbToHue(r:CGFloat,g:CGFloat,b:CGFloat) -> (h:CGFloat, s:CGFloat, b:CGFloat) {
+        let minV:CGFloat = CGFloat(min(r, g, b))
+        let maxV:CGFloat = CGFloat(max(r, g, b))
+        let delta:CGFloat = maxV - minV
+        var hue:CGFloat = 0
+        if delta != 0 {
+            if r == maxV {
+                hue = (g - b) / delta
+            }
+            else if g == maxV {
+                hue = 2 + (b - r) / delta
+            }
+            else {
+                hue = 4 + (r - g) / delta
+            }
+            hue *= 60
+            if hue < 0 {
+                hue += 360
+            }
+        }
+        let saturation = maxV == 0 ? 0 : (delta / maxV)
+        let brightness = maxV
+        return (h:hue/360, s:saturation, b:brightness)
+    }
+    
 }
