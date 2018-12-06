@@ -21,38 +21,61 @@ class ModifyColorVC: UIViewController {
     @IBOutlet weak var brightnessSlider: UISlider!
     @IBOutlet weak var brightnessLabel: UILabel!
     
-    var hue : Float = 0
-    var saturation : Float = 0
-    var brightness : Float = 0
+    var source: SWIFT_MainViewController?
+    
+    var light : SingleLight = SingleLight(hue: 1, saturation: 1, brightness: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hueSlider.value = self.hue
-        self.saturationSlider.value = self.saturation
-        self.brightnessSlider.value = self.brightness
+        self.hueSlider.value = Float(self.light.hue)
+        self.saturationSlider.value = Float(self.light.saturation)
+        self.brightnessSlider.value = Float(self.light.brightness)
+        
+        self.hueLabel.text = "\((hueSlider.value * 360).rounded())"
+        self.saturationLabel.text = "\((saturationSlider.value * 100).rounded())"
+        self.brightnessLabel.text = "\((brightnessSlider.value * 100).rounded())"
+        
+        self.colorView.backgroundColor = UIColor(hue: self.light.hue, saturation: self.light.saturation, brightness: self.light.brightness, alpha: 1.0)
     }
     
     @IBAction func hueChanged(_ sender: Any) {
-        hueLabel.text = "\(hueSlider.value)"
-        self.hue = hueSlider.value
-        colorView.backgroundColor = UIColor(hue: CGFloat(self.hue), saturation: CGFloat(self.saturation), brightness: CGFloat(self.brightness), alpha: 1.0)
+        self.hueLabel.text = "\((hueSlider.value * 360).rounded())"
+        self.light.hue = CGFloat(hueSlider.value)
+        self.colorView.backgroundColor = UIColor(hue: self.light.hue, saturation: self.light.saturation, brightness: self.light.brightness, alpha: 1.0)
     }
     
     @IBAction func saturationChanged(_ sender: Any) {
-        saturationLabel.text = "\(saturationSlider.value)"
-        self.saturation = saturationSlider.value
-        colorView.backgroundColor = UIColor(hue: CGFloat(self.hue), saturation: CGFloat(self.saturation), brightness: CGFloat(self.brightness), alpha: 1.0)
+        self.saturationLabel.text = "\((saturationSlider.value * 100).rounded())"
+        self.light.saturation = CGFloat(saturationSlider.value)
+        self.colorView.backgroundColor = UIColor(hue: self.light.hue, saturation: self.light.saturation, brightness: self.light.brightness, alpha: 1.0)
     }
+    
     
     @IBAction func brightnessChanged(_ sender: Any) {
-        brightnessLabel.text = "\(saturationSlider.value)"
-        self.brightness = brightnessSlider.value
-        colorView.backgroundColor = UIColor(hue: CGFloat(self.hue), saturation: CGFloat(self.saturation), brightness: CGFloat(self.brightness), alpha: 1.0)
+        self.brightnessLabel.text = "\((brightnessSlider.value * 100).rounded())"
+        self.light.brightness = CGFloat(brightnessSlider.value)
+        self.colorView.backgroundColor = UIColor(hue: self.light.hue, saturation: self.light.saturation, brightness: self.light.brightness, alpha: 1.0)
     }
-    
-    @IBAction func didTapSetColor(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+   
+   override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
+      let vc = subsequentVC as? SWIFT_MainViewController
+      
+      switch unwindSegue.identifier {
+      case "grouping1":
+         vc?.Light1 = light
+         vc?.grouping1.backgroundColor = UIColor(hue: light.hue, saturation: light.saturation, brightness: light.brightness, alpha: 1.0)
+         break
+      case "grouping2":
+         vc?.Light2 = light
+         vc?.grouping2.backgroundColor = UIColor(hue: light.hue, saturation: light.saturation, brightness: light.brightness, alpha: 1.0)
+         break
+      case "grouping3":
+         vc?.Light3 = light
+         vc?.grouping3.backgroundColor = UIColor(hue: light.hue, saturation: light.saturation, brightness: light.brightness, alpha: 1.0)
+         break;
+      default:
+         print("Nothing happens")
+      }
+   }
     
 }

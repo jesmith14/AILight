@@ -11,8 +11,8 @@ import Foundation
 
 struct SingleLight {
     
-   var hue : Int
-   var saturation : Int
-   var brightness : Int
+   var hue : CGFloat
+   var saturation : CGFloat
+   var brightness : CGFloat
   
 }

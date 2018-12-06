@@ -7,6 +7,7 @@ from NeuralNetworkClass import *
 class NNMaster(object):
 
    def __init__(self):
+      #self.NN = Neural_Network()
       y_vals = pd.read_csv('training_data_y.csv')
       x_vals_original = pd.read_csv('training_data_x.csv')
       x_vals_original.columns = ['R1', 'G1', 'B1', 'W1', 'R2', 'G2', 'B2', 'W2', 'R3', 'G3', 'B3', 'W3']
@@ -55,6 +56,15 @@ class NNMaster(object):
        scaledTestData = self.scaleInputTestData(inputTestData)
        predictedValues = (NeuralNet.predict(scaledTestData) * 100).data.numpy()
        return predictedValues
+
+def neuralRun(testData):
+    Master = NNMaster()
+
+    # this is what you call to train neural net
+    Master.trainData(Master.x_train, Master.y_train, Master.NN, 100)
+    # this is an example of passing in some sort of test data
+    #testData = [176, 190, 181, 0.616237231, 92, 93, 79, 0.073493527, 217, 225, 224, 0.310269242]
+    print('TEST', Master.getPredictionArray(testData, Master.NN))
 
 def main():
    #create neural net master and neural net

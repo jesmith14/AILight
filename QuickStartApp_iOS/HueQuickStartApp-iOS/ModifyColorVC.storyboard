@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tBb-us-jdR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--Modify ColorVC-->
         <scene sceneID="OE1-nz-7gf">
             <objects>
-                <viewController id="tBb-us-jdR" customClass="ModifyColorVC" customModule="HueQuickStartApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModifyColorVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tBb-us-jdR" customClass="ModifyColorVC" customModule="HueQuickStartApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aBG-zj-tv7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="width" constant="177" id="ost-vb-Xhh"/>
                                 </constraints>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="360" translatesAutoresizingMaskIntoConstraints="NO" id="2Su-8v-oWH">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="2Su-8v-oWH">
                                 <rect key="frame" x="128.5" y="333" width="118" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="h85-lw-NEL"/>
@@ -34,22 +34,22 @@
                                     <action selector="hueChanged:" destination="tBb-us-jdR" eventType="valueChanged" id="bJx-EX-XrS"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="e7v-rc-UYY">
-                                <rect key="frame" x="128.5" y="393" width="118" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="114" id="kQU-Pe-fG9"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="saturationChanged:" destination="tBb-us-jdR" eventType="valueChanged" id="5jJ-zO-lQ6"/>
-                                </connections>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="m1J-r8-i27">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="m1J-r8-i27">
                                 <rect key="frame" x="128.5" y="453" width="118" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="0ui-An-zCn"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="brightnessChanged:" destination="tBb-us-jdR" eventType="valueChanged" id="Adr-nE-X1N"/>
+                                    <action selector="brightnessChanged:" destination="tBb-us-jdR" eventType="valueChanged" id="VOd-9m-0sa"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="thh-RU-tcD">
+                                <rect key="frame" x="128.5" y="393" width="118" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="sp3-PI-Gdf"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="saturationChanged:" destination="tBb-us-jdR" eventType="valueChanged" id="J7Y-b8-jdh"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6o-dq-yEX">
@@ -74,24 +74,24 @@
                                 <rect key="frame" x="155.5" y="541" width="64" height="30"/>
                                 <state key="normal" title="Set Color"/>
                                 <connections>
-                                    <action selector="didTapSetColor:" destination="tBb-us-jdR" eventType="touchUpInside" id="y5a-JG-LH2"/>
+                                    <segue destination="d5R-AK-LAW" kind="unwind" unwindAction="unwindFromColorPicker:" id="V50-zk-HiN"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="0OA-io-8fT" firstAttribute="leading" secondItem="e7v-rc-UYY" secondAttribute="trailing" constant="33.5" id="C5B-qV-vKe"/>
                             <constraint firstItem="e6o-dq-yEX" firstAttribute="leading" secondItem="2Su-8v-oWH" secondAttribute="trailing" constant="33.5" id="Cg0-Ps-oyI"/>
                             <constraint firstItem="m1J-r8-i27" firstAttribute="centerX" secondItem="Lzv-QU-Sgb" secondAttribute="centerX" id="CgB-qJ-jtY"/>
                             <constraint firstItem="2Su-8v-oWH" firstAttribute="top" secondItem="oDB-It-irh" secondAttribute="bottom" constant="52" id="D3z-xE-49M"/>
                             <constraint firstItem="9og-f9-JVb" firstAttribute="top" secondItem="0OA-io-8fT" secondAttribute="bottom" constant="34" id="KxV-ZS-6WV"/>
-                            <constraint firstItem="m1J-r8-i27" firstAttribute="top" secondItem="e7v-rc-UYY" secondAttribute="bottom" constant="30" id="P4S-1r-z1x"/>
+                            <constraint firstItem="0OA-io-8fT" firstAttribute="leading" secondItem="thh-RU-tcD" secondAttribute="trailing" constant="33.5" id="OQL-rb-kS6"/>
                             <constraint firstItem="9og-f9-JVb" firstAttribute="leading" secondItem="m1J-r8-i27" secondAttribute="trailing" constant="34" id="Rmj-WQ-u3X"/>
+                            <constraint firstItem="thh-RU-tcD" firstAttribute="top" secondItem="2Su-8v-oWH" secondAttribute="bottom" constant="30" id="SCq-Uo-QYd"/>
                             <constraint firstItem="e6o-dq-yEX" firstAttribute="top" secondItem="oDB-It-irh" secondAttribute="bottom" constant="57" id="VmU-UU-mEG"/>
+                            <constraint firstItem="m1J-r8-i27" firstAttribute="top" secondItem="thh-RU-tcD" secondAttribute="bottom" constant="30" id="XEl-Ke-MOG"/>
                             <constraint firstItem="oDB-It-irh" firstAttribute="centerX" secondItem="Lzv-QU-Sgb" secondAttribute="centerX" id="Y7x-Gk-1Qe"/>
                             <constraint firstItem="ueL-Cc-XsQ" firstAttribute="top" secondItem="m1J-r8-i27" secondAttribute="bottom" constant="58" id="af5-cr-8Ns"/>
-                            <constraint firstItem="e7v-rc-UYY" firstAttribute="centerX" secondItem="Lzv-QU-Sgb" secondAttribute="centerX" id="fDk-6i-cbB"/>
-                            <constraint firstItem="e7v-rc-UYY" firstAttribute="top" secondItem="2Su-8v-oWH" secondAttribute="bottom" constant="30" id="iOD-Vs-6AN"/>
+                            <constraint firstItem="thh-RU-tcD" firstAttribute="centerX" secondItem="Lzv-QU-Sgb" secondAttribute="centerX" id="bZ5-kC-Nuq"/>
                             <constraint firstItem="2Su-8v-oWH" firstAttribute="centerX" secondItem="Lzv-QU-Sgb" secondAttribute="centerX" id="j1c-nQ-Cs5"/>
                             <constraint firstItem="ueL-Cc-XsQ" firstAttribute="centerX" secondItem="Lzv-QU-Sgb" secondAttribute="centerX" id="knv-bd-Nhc"/>
                             <constraint firstItem="0OA-io-8fT" firstAttribute="top" secondItem="e6o-dq-yEX" secondAttribute="bottom" constant="39" id="sUF-qy-5oG"/>
@@ -104,12 +104,13 @@
                         <outlet property="brightnessSlider" destination="m1J-r8-i27" id="C0w-eC-pno"/>
                         <outlet property="colorView" destination="oDB-It-irh" id="C6W-5Z-LBP"/>
                         <outlet property="hueLabel" destination="e6o-dq-yEX" id="EX8-Qw-7Th"/>
-                        <outlet property="hueSlider" destination="2Su-8v-oWH" id="rgE-gS-fT3"/>
+                        <outlet property="hueSlider" destination="2Su-8v-oWH" id="o4r-pq-BeH"/>
                         <outlet property="saturationLabel" destination="0OA-io-8fT" id="jLS-Qf-5Gw"/>
-                        <outlet property="saturationSlider" destination="m1J-r8-i27" id="BZB-aw-Jkg"/>
+                        <outlet property="saturationSlider" destination="thh-RU-tcD" id="yOK-QT-fQ4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fmM-kM-KGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="d5R-AK-LAW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1311.2" y="-100.29985007496252"/>
         </scene>

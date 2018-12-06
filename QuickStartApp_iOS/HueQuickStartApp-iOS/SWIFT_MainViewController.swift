@@ -17,21 +17,28 @@ import Alamofire
     @IBOutlet weak var grouping2: UIView!
     @IBOutlet weak var grouping3: UIView!
     
-    var Light1: SingleLight = SingleLight(hue: 0,saturation: 0,brightness: 0)
-    var Light2: SingleLight = SingleLight(hue: 0,saturation: 0,brightness: 0)
-    var Light3: SingleLight = SingleLight(hue: 0,saturation: 0,brightness: 0)
+    var Light1: SingleLight = SingleLight(hue: 360,saturation: 100,brightness: 100)
+    var Light2: SingleLight = SingleLight(hue: 360,saturation: 100,brightness: 100)
+    var Light3: SingleLight = SingleLight(hue: 360,saturation: 100,brightness: 100)
    
     var imagePicker = UIImagePickerController()
     var currentImage : UIImage!
+    var grouping : Int = 0
+
+    var kmeansArray : [[Float]] = [[0,0,0,0], [0,0,0,0], [0,0,0,0]]
+    var newColors : [Float] = [0,0,0,0,0,0,0,0,0]
+    var givenHSB : [[Float]] = [[0,0,0], [0,0,0], [0,0,0]]
+    var userHSB : [[Float]] = [[0,0,0], [0,0,0], [0,0,0]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-    }
-    
-    func getHueValue(hueValue: Int) -> Int {
         
-        return (hueValue / 360) * 65535
+    }
+   
+    func getHueValue(hueValue: CGFloat) -> Int {
+        
+        return Int(hueValue * 65535)
     }
     
     func generateLightScheme(){
@@ -39,15 +46,28 @@ import Alamofire
         let cache = PHBridgeResourcesReader.readBridgeResourcesCache()!
         
         let bridgeSendAPI = PHBridgeSendAPI()
-        
+
+        var currentLight = 1
         for light in cache.lights.values {
             
             if light is PHLight {
                 let lightState = PHLightState()
                 
-                lightState.hue = 360
-                lightState.saturation = 100
-                lightState.brightness = 100
+                if currentLight == 1 {
+                    lightState.hue = NSNumber(value: Int(getHueValue(hueValue: Light1.hue)))
+                    lightState.saturation = NSNumber(value: Int(Float(Light1.saturation)*254))
+                    lightState.brightness = NSNumber(value: Int(Float(Light1.brightness)*254))
+                } else if currentLight == 2 {
+                    lightState.hue = NSNumber(value: Int(getHueValue(hueValue: Light2.hue)))
+                    lightState.saturation = NSNumber(value: Int(Float(Light2.saturation)*254))
+                    lightState.brightness = NSNumber(value: Int(Float(Light2.brightness)*254))
+                } else {
+                    lightState.hue = NSNumber(value: Int(getHueValue(hueValue: Light3.hue)))
+                    lightState.saturation = NSNumber(value: Int(Float(Light3.saturation)*254))
+                    lightState.brightness = NSNumber(value: Int(Float(Light3.brightness)*254))
+                }
+                
+                currentLight += 1
                 
                 // Send lightstate to light
                 bridgeSendAPI.updateLightState(forId: (light as AnyObject).identifier, with: lightState, completionHandler: nil)
@@ -55,7 +75,38 @@ import Alamofire
         }
     }
     
+    @IBAction func didTapSubmitToNeuralNet(_ sender: Any) {
+        let alert = UIAlertController(title: "Added to Neural Net", message: "Your lighting preferences have been added", preferredStyle: .alert)
+        let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(actionOK)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func didTapImportPhoto(_ sender: UIButton) {
+        let req = NSMutableURLRequest(url: NSURL(string:"http://0.0.0.0:5000/startNeuralNet")! as URL)
+        let ses = URLSession.shared
+        req.httpMethod = "POST"
+        req.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+        req.setValue("test", forHTTPHeaderField: "X-FileName")
+        let task = ses.dataTask(with: req as URLRequest, completionHandler: { data, response, error in
+            guard error == nil else {
+                return
+            }
+            guard let data = data else {
+                return
+            }
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                    print(json)
+                }
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        })
+        
+        task.resume()
+        
         
         imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         present(imagePicker, animated: true,completion: nil)
@@ -65,27 +116,55 @@ import Alamofire
     @IBAction func didTapSetLights(_ sender: Any) {
         generateLightScheme()
     }
-    
+   
     @IBAction func didTapGoBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func didTapGrouping1(_ sender: Any) {
-        let vc = ModifyColorVC()
+   
+   @IBAction func unwindFromColorPicker(_ sender: UIStoryboardSegue){
+      if sender.source is ModifyColorVC {
+         if let colorPickerVC = sender.source as? ModifyColorVC {
+            self.handleLightChange(newLight: colorPickerVC.light)
+         }
+      }
+   }
+   
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+      let vc = segue.destination as? ModifyColorVC
+    
+      if segue.identifier == "grouping1" {
+        self.grouping = 1
+        vc?.light = Light1
+      }
+      else if segue.identifier == "grouping2" {
+        self.grouping = 2
+        vc?.light = Light2
+      }
+      else {
+        self.grouping = 3
+        vc?.light = Light3
+      }
+   }
+    
+    func handleLightChange(newLight: SingleLight) {
+        print("CALLING HANDLE LIGHT CHANGE ", grouping)
         
-        vc.hue = 360
-        vc.saturation = 100
-        vc.brightness = 100
-        
-        self.present(vc, animated: true, completion: nil)
+        if self.grouping == 1 {
+        Light1 = SingleLight(hue: newLight.hue, saturation: newLight.saturation, brightness: newLight.brightness)
+        self.grouping1.backgroundColor = UIColor(hue: self.Light1.hue, saturation: self.Light1.saturation, brightness: self.Light1.brightness, alpha: 1.0)
+        }
+        else if self.grouping == 2 {
+        Light2 = SingleLight(hue: newLight.hue, saturation: newLight.saturation, brightness: newLight.brightness)
+        self.grouping2.backgroundColor = UIColor(hue: self.Light2.hue, saturation: self.Light2.saturation, brightness: self.Light2.brightness, alpha: 1.0)
+        }
+        else {
+        Light3 = SingleLight(hue: newLight.hue, saturation: newLight.saturation, brightness: newLight.brightness)
+        self.grouping3.backgroundColor = UIColor(hue: self.Light3.hue, saturation: self.Light3.saturation, brightness: self.Light3.brightness, alpha: 1.0)
+        }
     }
-    
-    @IBAction func didTapGrouping2(_ sender: Any) {
-    }
-    
-    @IBAction func didTapGrouping3(_ sender: Any) {
-    }
-    
+   
 }
 
 extension SWIFT_MainViewController{
@@ -113,7 +192,6 @@ extension SWIFT_MainViewController{
             guard error == nil else {
                 return
             }
-                
             guard let data = data else {
                 return
             }
@@ -125,24 +203,37 @@ extension SWIFT_MainViewController{
                }
                let decoder = JSONDecoder()
                let lightCollection = try decoder.decode(LightCollection.self, from: data)
-                print("DATA: ")
-                print(data)
-                self.Light1 = SingleLight(hue: lightCollection.color1[0], saturation: lightCollection.color1[1], brightness: lightCollection.color1[2])
-                self.Light2 = SingleLight(hue: lightCollection.color2[0], saturation: lightCollection.color2[1], brightness: lightCollection.color2[2])
-                self.Light3 = SingleLight(hue: lightCollection.color3[0], saturation: lightCollection.color3[1], brightness: lightCollection.color3[2])
+               
+               //let kmean = lightCollection.kmeans
+               let hsbGiven = lightCollection.colors
+               //self.kmeansArray = [[kmean[0], kmean[1], kmean[2], kmean[3]], [kmean[4], kmean[5], kmean[6], kmean[7]], [kmean[8], kmean[9], kmean[10], kmean[11]]]
+               self.newColors = [hsbGiven[0], hsbGiven[1], hsbGiven[2], hsbGiven[4], hsbGiven[5], hsbGiven[6], hsbGiven[8], hsbGiven[9], hsbGiven[10]]
+               self.givenHSB = [[hsbGiven[0], hsbGiven[1], 100], [hsbGiven[3], hsbGiven[4], 100], [hsbGiven[6], hsbGiven[7], 100]]
+               
+               let hsb1 = self.rgbToHue(r: CGFloat(self.newColors[0]/255), g: CGFloat(self.newColors[1]/255), b: CGFloat(self.newColors[2]/255))
+                let hsb2 = self.rgbToHue(r: CGFloat(self.newColors[3]/255), g: CGFloat(self.newColors[4]/255), b: CGFloat(self.newColors[5]/255))
+                let hsb3 = self.rgbToHue(r: CGFloat(self.newColors[6]/255), g: CGFloat(self.newColors[7]/255), b: CGFloat(self.newColors[8]/255))
 
-                self.grouping1.backgroundColor = UIColor(red: CGFloat(self.Light1.hue)/255.0, green: CGFloat(self.Light1.saturation)/255.0, blue: CGFloat(self.Light1.brightness)/255.0, alpha: 1.0)
-                self.grouping2.backgroundColor = UIColor(red: CGFloat(self.Light2.hue)/255.0, green: CGFloat(self.Light2.saturation)/255.0, blue: CGFloat(self.Light2.brightness)/255.0, alpha: 1.0)
-                self.grouping3.backgroundColor = UIColor(red: CGFloat(self.Light3.hue)/255.0, green: CGFloat(self.Light3.saturation)/255.0, blue: CGFloat(self.Light3.brightness)/255.0, alpha: 1.0)
+                print("hsb1")
+                print(hsb1.h)
+                print(hsb1.s)
+                print(hsb1.b)
+                
+//                self.Light1 = SingleLight(hue: (CGFloat(self.givenHSB[0][0]/360)), saturation: CGFloat(self.givenHSB[0][1]/100), brightness: CGFloat(self.givenHSB[0][2]/100))
+//                self.Light2 = SingleLight(hue: CGFloat(self.givenHSB[1][0]/360), saturation: CGFloat(self.givenHSB[1][1]/100), brightness: CGFloat(self.givenHSB[1][2]/360))
+//                self.Light3 = SingleLight(hue: CGFloat(self.givenHSB[2][0]/360), saturation: CGFloat(self.givenHSB[2][1]/100), brightness: CGFloat(self.givenHSB[2][2]/100))
+                
+                self.Light1 = SingleLight(hue: hsb1.h, saturation: hsb1.s/1.5, brightness: hsb1.b*1.1)
+                self.Light2 = SingleLight(hue: hsb2.h, saturation: hsb2.s/1.5, brightness: hsb2.b*1.1)
+                self.Light3 = SingleLight(hue: hsb3.h, saturation: hsb3.s/1.5, brightness: hsb3.b*1.1)
+
+                
                 
                 DispatchQueue.main.async {
-                    self.grouping1.backgroundColor = UIColor(red: CGFloat(self.Light1.hue)/255.0, green: CGFloat(self.Light1.saturation)/255.0, blue: CGFloat(self.Light1.brightness)/255.0, alpha: 1.0)
-                    self.grouping2.backgroundColor = UIColor(red: CGFloat(self.Light2.hue)/255.0, green: CGFloat(self.Light2.saturation)/255.0, blue: CGFloat(self.Light2.brightness)/255.0, alpha: 1.0)
-                    self.grouping3.backgroundColor = UIColor(red: CGFloat(self.Light3.hue)/255.0, green: CGFloat(self.Light3.saturation)/255.0, blue: CGFloat(self.Light3.brightness)/255.0, alpha: 1.0)
+                    self.grouping1.backgroundColor = UIColor(hue: self.Light1.hue, saturation: self.Light1.saturation, brightness: self.Light1.brightness, alpha: 1.0)
+                    self.grouping2.backgroundColor = UIColor(hue: self.Light2.hue, saturation: self.Light2.saturation, brightness: self.Light2.brightness, alpha: 1.0)
+                    self.grouping3.backgroundColor = UIColor(hue: self.Light3.hue, saturation: self.Light3.saturation, brightness: self.Light3.brightness, alpha: 1.0)
                 }
-               //self.grouping1.backgroundColor = UIColor(hue: CGFloat(Light1.hue), saturation: CGFloat(Light1.saturation), brightness: CGFloat(Light1.brightness), alpha: 1.0)
-               //self.grouping2.backgroundColor = UIColor(hue: CGFloat(Light2.hue), saturation: CGFloat(Light2.saturation), brightness: CGFloat(Light2.brightness), alpha: 1.0)
-               //self.grouping3.backgroundColor = UIColor(hue: CGFloat(Light3.hue), saturation: CGFloat(Light3.saturation), brightness: CGFloat(Light3.brightness), alpha: 1.0)
                
             } catch let error {
                     print(error.localizedDescription)
@@ -151,4 +242,30 @@ extension SWIFT_MainViewController{
         
         task.resume()
     }
+    
+    func rgbToHue(r:CGFloat,g:CGFloat,b:CGFloat) -> (h:CGFloat, s:CGFloat, b:CGFloat) {
+        let minV:CGFloat = CGFloat(min(r, g, b))
+        let maxV:CGFloat = CGFloat(max(r, g, b))
+        let delta:CGFloat = maxV - minV
+        var hue:CGFloat = 0
+        if delta != 0 {
+            if r == maxV {
+                hue = (g - b) / delta
+            }
+            else if g == maxV {
+                hue = 2 + (b - r) / delta
+            }
+            else {
+                hue = 4 + (r - g) / delta
+            }
+            hue *= 60
+            if hue < 0 {
+                hue += 360
+            }
+        }
+        let saturation = maxV == 0 ? 0 : (delta / maxV)
+        let brightness = maxV
+        return (h:hue/360, s:saturation, b:brightness)
+    }
+    
 }
