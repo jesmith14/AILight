@@ -4,6 +4,7 @@ from flask import request
 from kmeans import *
 from Neural_Net import *
 import os
+
 app = Flask(__name__)
 #Master = None
 @app.route('/startNeuralNet',methods=['POST'])
@@ -50,6 +51,18 @@ def ImageUpload():
         print('RETURNED VALUES FOR HSB', returnVals)
         #finalValues = neuralRun(rbgArray)
         #return jsonify(color1=color1,color2=color2,color3=color3)
+
+    # TESTING BACK PROPOGATION 
+
+        inputList = [176, 190, 181, 0.6162372307, 92, 93, 79, 0.0734935274411679, 217, 225, 224, 0.310269241904131]
+        outputList = [211, 2, 97, 204, 3, 100, 204, 12, 99]
+
+        userList = [56, 54, 100, 204, 3, 100, 204, 12, 99]
+
+        callBackProp(inputList, outputList, userList)
+        backPropValues = Master.getPredictionArray(inputList,NN)
+        print("BACK PROP VALS: " + str(backPropValues))
+
         return jsonify(values=returnVals)
     return jsonify(error='Request Failed')
 
