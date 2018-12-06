@@ -67,19 +67,24 @@ def callBackProp(inputList, outputList, userList, NeuralNet):
 
 	o = torch.tensor(([uh1], [us1], [ub1], [uh2], [us2], [ub2], [uh3], [us3], [ub3]), dtype=torch.float)
 
-	NeuralNet..backward(X, y, o)
+	NeuralNet.backward(X, y, o)
 
-	NeuralNet.saveWeights(model)
+	NeuralNet.saveWeights(NeuralNet)
 
 
 app = Flask(__name__)
 @app.route('/backPropInit',methods=['POST'])
 def backPropInit():
+
+	NN = torch.load(neuralNetFile)
+
 	data = request.data
 	inputList = data[0]
 	outputList = data[1]
 	userList = data[2]
-	callBackProp(inputList, outputList, userList, NeuralNet)
+	callBackProp(inputList, outputList, userList, NN)
+
+	return jsonify(resp= "Backpropogation Neural Net Started Success")
 
 
 
