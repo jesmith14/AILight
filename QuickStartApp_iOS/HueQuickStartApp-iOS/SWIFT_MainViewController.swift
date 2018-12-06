@@ -26,6 +26,7 @@ import Alamofire
     var grouping : Int = 0
 
     var kmeansArray : [[Float]] = [[0,0,0,0], [0,0,0,0], [0,0,0,0]]
+    var newColors : [Float] = [0,0,0,0,0,0,0,0,0]
     var givenHSB : [[Float]] = [[0,0,0], [0,0,0], [0,0,0]]
     var userHSB : [[Float]] = [[0,0,0], [0,0,0], [0,0,0]]
     
@@ -73,7 +74,15 @@ import Alamofire
             }
         }
     }
-   
+    
+    @IBAction func didTapSubmitToNeuralNet(_ sender: Any) {
+        let alert = UIAlertController(title: "Added to Neural Net", message: "Your lighting preferences have been added", preferredStyle: .alert)
+        let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(actionOK)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func didTapImportPhoto(_ sender: UIButton) {
         let req = NSMutableURLRequest(url: NSURL(string:"http://0.0.0.0:5000/startNeuralNet")! as URL)
         let ses = URLSession.shared
@@ -195,23 +204,30 @@ extension SWIFT_MainViewController{
                let decoder = JSONDecoder()
                let lightCollection = try decoder.decode(LightCollection.self, from: data)
                
-               let kmean = lightCollection.kmeans
+               //let kmean = lightCollection.kmeans
                let hsbGiven = lightCollection.colors
-               self.kmeansArray = [[kmean[0], kmean[1], kmean[2], kmean[3]], [kmean[4], kmean[5], kmean[6], kmean[7]], [kmean[8], kmean[9], kmean[10], kmean[11]]]
+               //self.kmeansArray = [[kmean[0], kmean[1], kmean[2], kmean[3]], [kmean[4], kmean[5], kmean[6], kmean[7]], [kmean[8], kmean[9], kmean[10], kmean[11]]]
+               self.newColors = [hsbGiven[0], hsbGiven[1], hsbGiven[2], hsbGiven[4], hsbGiven[5], hsbGiven[6], hsbGiven[8], hsbGiven[9], hsbGiven[10]]
                self.givenHSB = [[hsbGiven[0], hsbGiven[1], 100], [hsbGiven[3], hsbGiven[4], 100], [hsbGiven[6], hsbGiven[7], 100]]
                
-               let hsb1 = self.rgbToHue(r: CGFloat(lightCollection.colors[0])/255, g: CGFloat(lightCollection.colors[1])/255, b: 100/255)
-                let hsb2 = self.rgbToHue(r: CGFloat(lightCollection.colors[3])/255, g: CGFloat(lightCollection.colors[4])/255, b: 100/255)
-                let hsb3 = self.rgbToHue(r: CGFloat(lightCollection.colors[6])/255, g: CGFloat(lightCollection.colors[7])/255, b: 100/255)
-                
+               let hsb1 = self.rgbToHue(r: CGFloat(self.newColors[0]/255), g: CGFloat(self.newColors[1]/255), b: CGFloat(self.newColors[2]/255))
+                let hsb2 = self.rgbToHue(r: CGFloat(self.newColors[3]/255), g: CGFloat(self.newColors[4]/255), b: CGFloat(self.newColors[5]/255))
+                let hsb3 = self.rgbToHue(r: CGFloat(self.newColors[6]/255), g: CGFloat(self.newColors[7]/255), b: CGFloat(self.newColors[8]/255))
+
                 print("hsb1")
                 print(hsb1.h)
                 print(hsb1.s)
                 print(hsb1.b)
                 
-                self.Light1 = SingleLight(hue: hsb1.h, saturation: hsb1.s, brightness: hsb1.b)
-                self.Light2 = SingleLight(hue: hsb2.h, saturation: hsb2.s, brightness: hsb2.b)
-                self.Light3 = SingleLight(hue: hsb3.h, saturation: hsb3.s, brightness: hsb3.b)
+//                self.Light1 = SingleLight(hue: (CGFloat(self.givenHSB[0][0]/360)), saturation: CGFloat(self.givenHSB[0][1]/100), brightness: CGFloat(self.givenHSB[0][2]/100))
+//                self.Light2 = SingleLight(hue: CGFloat(self.givenHSB[1][0]/360), saturation: CGFloat(self.givenHSB[1][1]/100), brightness: CGFloat(self.givenHSB[1][2]/360))
+//                self.Light3 = SingleLight(hue: CGFloat(self.givenHSB[2][0]/360), saturation: CGFloat(self.givenHSB[2][1]/100), brightness: CGFloat(self.givenHSB[2][2]/100))
+                
+                self.Light1 = SingleLight(hue: hsb1.h, saturation: hsb1.s/1.5, brightness: hsb1.b*1.1)
+                self.Light2 = SingleLight(hue: hsb2.h, saturation: hsb2.s/1.5, brightness: hsb2.b*1.1)
+                self.Light3 = SingleLight(hue: hsb3.h, saturation: hsb3.s/1.5, brightness: hsb3.b*1.1)
+
+                
                 
                 DispatchQueue.main.async {
                     self.grouping1.backgroundColor = UIColor(hue: self.Light1.hue, saturation: self.Light1.saturation, brightness: self.Light1.brightness, alpha: 1.0)

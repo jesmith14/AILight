@@ -9,11 +9,11 @@
 import Foundation
 
 struct LightCollection : Codable {
-   var kmeans : [Float]
+   //var kmeans : [Float]
    var colors: [Float]
    
    private enum CodingKeys: String, CodingKey {
-      case kmeans
+      //case kmeans
       case colors
    }
    

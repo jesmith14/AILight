@@ -54,16 +54,16 @@ def ImageUpload():
 
     # TESTING BACK PROPOGATION 
 
-        inputList = [176, 190, 181, 0.6162372307, 92, 93, 79, 0.0734935274411679, 217, 225, 224, 0.310269241904131]
-        outputList = [211, 2, 97, 204, 3, 100, 204, 12, 99]
+        # inputList = [176, 190, 181, 0.6162372307, 92, 93, 79, 0.0734935274411679, 217, 225, 224, 0.310269241904131]
+        # outputList = [211, 2, 97, 204, 3, 100, 204, 12, 99]
+        #
+        # userList = [56, 54, 100, 204, 3, 100, 204, 12, 99]
+        #
+        # callBackProp(inputList, outputList, userList)
+        # backPropValues = Master.getPredictionArray(inputList,NN)
+        # print("BACK PROP VALS: " + str(backPropValues))
 
-        userList = [56, 54, 100, 204, 3, 100, 204, 12, 99]
-
-        callBackProp(inputList, outputList, userList)
-        backPropValues = Master.getPredictionArray(inputList,NN)
-        print("BACK PROP VALS: " + str(backPropValues))
-
-        return jsonify(values=returnVals)
+        return jsonify(colors=rbgArray)
     return jsonify(error='Request Failed')
 
 @app.route('/backPropInit',methods=['POST'])

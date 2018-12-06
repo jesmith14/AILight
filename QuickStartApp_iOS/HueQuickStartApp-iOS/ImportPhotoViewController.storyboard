@@ -41,13 +41,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wui-fi-jRo">
-                                <rect key="frame" x="153" y="564" width="69" height="30"/>
-                                <state key="normal" title="Set Lights"/>
-                                <connections>
-                                    <action selector="didTapSetLights:" destination="16O-TS-r97" eventType="touchUpInside" id="Y8Z-j3-0ii"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ay-Na-ZQU">
                                 <rect key="frame" x="158.5" y="602" width="58" height="30"/>
                                 <state key="normal" title="Go Back"/>
@@ -103,25 +96,42 @@
                                     <constraint firstAttribute="width" secondItem="yS1-g6-e04" secondAttribute="height" multiplier="2:2" id="prD-Eo-W0a"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vg-HB-eoN">
+                                <rect key="frame" x="145" y="563" width="144" height="30"/>
+                                <state key="normal" title="Submit to Neural Net"/>
+                                <connections>
+                                    <action selector="didTapSubmitToNeuralNet:" destination="16O-TS-r97" eventType="touchUpInside" id="oKu-9j-8dI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wui-fi-jRo">
+                                <rect key="frame" x="46" y="563" width="69" height="30"/>
+                                <state key="normal" title="Set Lights"/>
+                                <connections>
+                                    <action selector="didTapSetLights:" destination="16O-TS-r97" eventType="touchUpInside" id="Y8Z-j3-0ii"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="v0e-fh-OUX" firstAttribute="centerX" secondItem="bDk-BP-TIQ" secondAttribute="centerX" id="0vP-zL-uFB"/>
                             <constraint firstItem="ZxC-Yc-vxU" firstAttribute="leading" secondItem="v0e-fh-OUX" secondAttribute="trailing" constant="30" id="Anv-RE-sON"/>
                             <constraint firstItem="8ay-Na-ZQU" firstAttribute="centerX" secondItem="bDk-BP-TIQ" secondAttribute="centerX" id="DfH-AF-RpP"/>
-                            <constraint firstItem="Wui-fi-jRo" firstAttribute="top" secondItem="FQ0-oU-CHg" secondAttribute="bottom" constant="8" id="Ja5-Iw-gGf"/>
+                            <constraint firstItem="5vg-HB-eoN" firstAttribute="top" secondItem="FQ0-oU-CHg" secondAttribute="bottom" constant="7" id="GZY-y4-Nq3"/>
                             <constraint firstItem="v0e-fh-OUX" firstAttribute="leading" secondItem="Jxa-wI-pta" secondAttribute="trailing" constant="30" id="OvE-2I-Fng"/>
                             <constraint firstItem="bDk-BP-TIQ" firstAttribute="bottom" secondItem="8ay-Na-ZQU" secondAttribute="bottom" constant="35" id="UdP-SS-idQ"/>
                             <constraint firstItem="yS1-g6-e04" firstAttribute="leading" secondItem="bDk-BP-TIQ" secondAttribute="leading" constant="46" id="VIa-bB-dGJ"/>
                             <constraint firstItem="FQ0-oU-CHg" firstAttribute="top" secondItem="v0e-fh-OUX" secondAttribute="bottom" constant="10" id="Z8l-jh-X8T"/>
+                            <constraint firstItem="Wui-fi-jRo" firstAttribute="leading" secondItem="bDk-BP-TIQ" secondAttribute="leading" constant="46" id="aDr-rN-MTE"/>
                             <constraint firstItem="Jxa-wI-pta" firstAttribute="width" secondItem="Jxa-wI-pta" secondAttribute="height" multiplier="1:1" id="bbW-re-TFm"/>
                             <constraint firstItem="yS1-g6-e04" firstAttribute="centerX" secondItem="bDk-BP-TIQ" secondAttribute="centerX" id="fTD-gN-tJm"/>
+                            <constraint firstItem="8ay-Na-ZQU" firstAttribute="top" secondItem="Wui-fi-jRo" secondAttribute="bottom" constant="9" id="fs7-Ec-GQZ"/>
                             <constraint firstItem="FQ0-oU-CHg" firstAttribute="top" secondItem="Jxa-wI-pta" secondAttribute="bottom" constant="10" id="hCB-qp-cCq"/>
                             <constraint firstItem="FQ0-oU-CHg" firstAttribute="top" secondItem="ZxC-Yc-vxU" secondAttribute="bottom" constant="10" id="hVy-Iq-nca"/>
                             <constraint firstItem="yS1-g6-e04" firstAttribute="top" secondItem="bDk-BP-TIQ" secondAttribute="top" constant="40" id="k5N-VI-f5Z"/>
-                            <constraint firstItem="Wui-fi-jRo" firstAttribute="centerX" secondItem="bDk-BP-TIQ" secondAttribute="centerX" id="lgk-v0-0zp"/>
+                            <constraint firstItem="Wui-fi-jRo" firstAttribute="top" secondItem="FQ0-oU-CHg" secondAttribute="bottom" constant="7" id="knA-Jf-PBl"/>
                             <constraint firstItem="FQ0-oU-CHg" firstAttribute="centerX" secondItem="bDk-BP-TIQ" secondAttribute="centerX" id="q6t-ar-tSY"/>
-                            <constraint firstItem="8ay-Na-ZQU" firstAttribute="top" secondItem="Wui-fi-jRo" secondAttribute="bottom" constant="8" id="ubJ-pT-F74"/>
+                            <constraint firstItem="5vg-HB-eoN" firstAttribute="leading" secondItem="Wui-fi-jRo" secondAttribute="trailing" constant="30" id="rKF-Wl-JW5"/>
+                            <constraint firstItem="8ay-Na-ZQU" firstAttribute="top" secondItem="5vg-HB-eoN" secondAttribute="bottom" constant="9" id="wSC-Gn-aL1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bDk-BP-TIQ"/>
                     </view>
