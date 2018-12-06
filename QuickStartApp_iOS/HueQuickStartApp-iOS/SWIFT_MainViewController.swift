@@ -17,18 +17,20 @@ import Alamofire
     @IBOutlet weak var grouping2: UIView!
     @IBOutlet weak var grouping3: UIView!
     
-    var Light1: SingleLight = SingleLight(hue: 0,saturation: 0,brightness: 0)
-    var Light2: SingleLight = SingleLight(hue: 0,saturation: 0,brightness: 0)
-    var Light3: SingleLight = SingleLight(hue: 0,saturation: 0,brightness: 0)
+    var Light1: SingleLight = SingleLight(hue: 360,saturation: 100,brightness: 100)
+    var Light2: SingleLight = SingleLight(hue: 360,saturation: 100,brightness: 100)
+    var Light3: SingleLight = SingleLight(hue: 360,saturation: 100,brightness: 100)
    
     var imagePicker = UIImagePickerController()
     var currentImage : UIImage!
+    var grouping : Int = 0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
     }
-    
+   
     func getHueValue(hueValue: Int) -> Int {
         
         return (hueValue / 360) * 65535
@@ -54,6 +56,23 @@ import Alamofire
             }
         }
     }
+   
+   func handleLightChange(newLight: SingleLight) {
+      print("CALLING HANDLE LIGHT CHANGE ", grouping)
+      
+      if self.grouping == 1 {
+         Light1 = SingleLight(hue: newLight.hue, saturation: newLight.saturation, brightness: newLight.brightness)
+         self.grouping1.backgroundColor = UIColor(hue: self.Light1.hue, saturation: self.Light1.saturation, brightness: self.Light1.brightness, alpha: 1.0)
+      }
+      else if self.grouping == 2 {
+         Light2 = SingleLight(hue: newLight.hue, saturation: newLight.saturation, brightness: newLight.brightness)
+         self.grouping2.backgroundColor = UIColor(hue: self.Light2.hue, saturation: self.Light2.saturation, brightness: self.Light2.brightness, alpha: 1.0)
+      }
+      else {
+         Light3 = SingleLight(hue: newLight.hue, saturation: newLight.saturation, brightness: newLight.brightness)
+         self.grouping3.backgroundColor = UIColor(hue: self.Light3.hue, saturation: self.Light3.saturation, brightness: self.Light3.brightness, alpha: 1.0)
+      }
+   }
     
     @IBAction func didTapImportPhoto(_ sender: UIButton) {
         
@@ -65,35 +84,58 @@ import Alamofire
     @IBAction func didTapSetLights(_ sender: Any) {
         generateLightScheme()
     }
+   
+   
+   @IBAction func unwindFromColorPicker(_ sender: UIStoryboardSegue){
+      if sender.source is ModifyColorVC {
+         if let colorPickerVC = sender.source as? ModifyColorVC {
+            print("Unwinding********")
+            self.handleLightChange(newLight: colorPickerVC.light)
+         }
+      }
+   }
+   
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      print("PREPING FOR SEGUE")
+      if segue.identifier == "grouping1" {
+         self.grouping = 1
+      }
+      else if segue.identifier == "grouping2" {
+         self.grouping = 2
+      }
+      else {
+         self.grouping = 3
+      }
+   }
+   
     
-    @IBAction func didTapGoBack(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func didTapGrouping1(_ sender: Any) {
-        let vc = UIStoryboard(name: "ModifyColorVC", bundle: nil).instantiateViewController(withIdentifier: "ModifyColorVC") as? ModifyColorVC
-        
-        vc!.light = Light1
-        
-        self.present(vc!, animated: true, completion: nil)
-    }
-    
-    @IBAction func didTapGrouping2(_ sender: Any) {
-        let vc = UIStoryboard(name: "ModifyColorVC", bundle: nil).instantiateViewController(withIdentifier: "ModifyColorVC") as? ModifyColorVC
-        
-        vc!.light = Light2
-        
-        self.present(vc!, animated: true, completion: nil)
-    }
-    
-    @IBAction func didTapGrouping3(_ sender: Any) {
-        let vc = UIStoryboard(name: "ModifyColorVC", bundle: nil).instantiateViewController(withIdentifier: "ModifyColorVC") as? ModifyColorVC
-        
-        vc!.light = Light3
-        
-        self.present(vc!, animated: true, completion: nil)
-    }
-    
+//    @IBAction func didTapGrouping1(_ sender: Any) {
+//        let vc = UIStoryboard(name: "ModifyColorVC", bundle: nil).instantiateViewController(withIdentifier: "ModifyColorVC") as? ModifyColorVC
+//
+//        vc!.light = Light1
+//        vc!.grouping = 1
+//
+//        self.present(vc!, animated: true, completion: nil)
+//    }
+//
+//    @IBAction func didTapGrouping2(_ sender: Any) {
+//        let vc = UIStoryboard(name: "ModifyColorVC", bundle: nil).instantiateViewController(withIdentifier: "ModifyColorVC") as? ModifyColorVC
+//
+//        vc!.light = Light2
+//        vc!.grouping = 2
+//
+//        self.present(vc!, animated: true, completion: nil)
+//    }
+//
+//    @IBAction func didTapGrouping3(_ sender: Any) {
+//        let vc = UIStoryboard(name: "ModifyColorVC", bundle: nil).instantiateViewController(withIdentifier: "ModifyColorVC") as? ModifyColorVC
+//
+//        vc!.light = Light3
+//        vc!.grouping = 3
+//
+//        self.present(vc!, animated: true, completion: nil)
+//    }
+   
 }
 
 extension SWIFT_MainViewController{

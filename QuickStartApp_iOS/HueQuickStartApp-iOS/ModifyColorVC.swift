@@ -56,10 +56,40 @@ class ModifyColorVC: UIViewController {
         self.light.brightness = CGFloat(brightnessSlider.value)
         self.colorView.backgroundColor = UIColor(hue: self.light.hue, saturation: self.light.saturation, brightness: self.light.brightness, alpha: 1.0)
     }
-    
-    @IBAction func didTapSetColor(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+   
+   override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
+      let vc = subsequentVC as? SWIFT_MainViewController
+      
+      switch unwindSegue.identifier {
+      case "grouping1":
+         vc?.Light1 = light
+         vc?.grouping1.backgroundColor = UIColor(hue: light.hue, saturation: light.saturation, brightness: light.brightness, alpha: 1.0)
+         break
+      case "grouping2":
+         vc?.Light2 = light
+         vc?.grouping2.backgroundColor = UIColor(hue: light.hue, saturation: light.saturation, brightness: light.brightness, alpha: 1.0)
+         break
+      case "grouping3":
+         vc?.Light3 = light
+         vc?.grouping3.backgroundColor = UIColor(hue: light.hue, saturation: light.saturation, brightness: light.brightness, alpha: 1.0)
+         break;
+      default:
+         print("Nothing happens")
+      }
+   }
+   
+   
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      
+      if segue.identifier == "changeColor" {
+         let mainVC = segue.destination as! SWIFT_MainViewController
+//         mainVC.callback = { result in
+//            print(result)
+//            mainVC.handleLightChange(lightCollection: light)
+//            // do something with the result
+//         }
+         mainVC.handleLightChange(newLight: light)
+      }
+   }
     
 }

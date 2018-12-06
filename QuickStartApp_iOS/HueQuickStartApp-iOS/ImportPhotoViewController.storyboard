@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--ModifyColorVC-->
+        <scene sceneID="HGX-9c-bxj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ModifyColorVC" id="dsl-GX-Vd8" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wcc-FQ-QWf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="734" y="-118"/>
+        </scene>
+        <!--ModifyColorVC-->
+        <scene sceneID="kgK-id-oNG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ModifyColorVC" id="Fbq-3g-4qi" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B84-OC-M1B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="734" y="26"/>
+        </scene>
+        <!--ModifyColorVC-->
+        <scene sceneID="CBe-Eh-cV3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ModifyColorVC" id="gVh-3Y-Iti" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i13-ED-MSi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="734" y="187"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="V02-4f-bl5">
             <objects>
@@ -113,16 +137,19 @@
                 <tapGestureRecognizer id="3oh-Cq-tLB" userLabel="grouping1tapped">
                     <connections>
                         <action selector="didTapGrouping1:" destination="16O-TS-r97" id="Sd4-uR-fQI"/>
+                        <segue destination="dsl-GX-Vd8" kind="show" identifier="grouping1" id="uAa-Se-j8l"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="7x4-2X-FCI" userLabel="grouping2tapped">
                     <connections>
                         <action selector="didTapGrouping2:" destination="16O-TS-r97" id="WgP-Sw-4bl"/>
+                        <segue destination="Fbq-3g-4qi" kind="show" identifier="grouping2" id="27p-PX-6VG"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="5AK-iL-ceZ" userLabel="grouping3tapped">
                     <connections>
                         <action selector="didTapGrouping3:" destination="16O-TS-r97" id="Dtd-Qa-sK4"/>
+                        <segue destination="gVh-3Y-Iti" kind="show" identifier="grouping3" id="tIP-iz-ckm"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
