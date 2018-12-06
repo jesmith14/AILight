@@ -240,7 +240,7 @@ class Kmeans(object):
         totalWeight = sum([pair[0] for pair in self.weights])
         i = 0
         for (weight, color) in self.weights:
-            adjusted_weight = weight / totalWeight
+            adjusted_weight = float(weight)/float(totalWeight)
             self.weights[i] = (adjusted_weight, color)
             i = i + 1
         print('COLOR WEIGHTS: ', self.weights)
