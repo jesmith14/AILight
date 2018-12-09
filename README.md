@@ -1,8 +1,42 @@
-The hue Apple SDK by Philips
-===============
+# Project Palette
+
+##### Creators: Jessie Smith, Landon Gerrits, Monica Ravichandran, Andrew Cofano, Kalyan Vejalla
+
+* [Overview](#overview)
+* [Information For Anyone Forking](#information-for-anyone-forking)
+* [Hue Lights SDK Guide](#hue-lights-sdk-guide)
+* [Contact Us!](#contact-us)
+
+---
+## [Overview](#overview)
+
+This project originally began as an attempt to use the Phillips Hue SDK Lighting app to reflect weather patterns. As weather changed, the lighting would change. We then pivoted and decided to use the lights to suggest lighting schemes for a room. This project is an iOS application that allows a user to upload an image of their room, and then sets their Phillips Hue lightbulbs to the suggested room lighting complementary color schemes. We use a kmeans clustering algorithm that determines the most prominent colors in the room. Then, using these colors and weights, we feed the information into a trained neural net to produce suggested HSB (lighting) values for the Phillips Hue lightbulbs in the room. The user has the ability to manually modify the suggested HSB values and retrain the neural net so over time the neural net discovers and suggests user preferred values.
+
+---
+## [Information For Anyone Forking](#information-for-anyone-forking)
+
+In order to run this repository, you will need to download many packages for swift and for python. The swift and python files work together through a Flask Server on the backend.
+To get started, make sure you have the following:
+- Mojave OS if you are on a Mac
+- XCode to run the swift files
+- Flask to run the backend
+- numpy, pandas, pytorch, and pillow to get started on the python end (you will need to import many more modules and libraries than this, just check the top of the python files!)
+
+To run the repo:
+1. Open the ___ file in XCode and make sure everything builds
+2. Open the terminal and cd into the AILight directory
+3. run the following command : `python swift_to_flask.py`
+4. Open a phone simulator in XCode
+5. Upload an image.
+
+From there, you can see the suggested lighting values. You can either accept them, change them manually, retrain the neural net with them, upload a new image, or exit the program.
+
+---
+## [Hue Lights SDK Guide](#hue-lights-sdk-guide)
+##### The hue Apple SDK by Philips
 (c) Copyright Philips 2012-2014
 Introduction
-----------------
+---
 The Hue SDK is a set of tools that are designed to make it easy to access the Hue system through the Hue Wi-Fi network connected bridge and control an associated set of connected lamps. The aim of the SDK is to enable you to create your own applications for the Hue system.
 The tools are provided with documentation for the SDK and example code. They are designed to be flexible, whilst easing the use of the more complex components of the system.
 
@@ -88,4 +122,16 @@ Redistribution and use in source and binary forms, with or without modification,
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOTLIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FORA PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER ORCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, ORPROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OFLIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDINGNEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THISSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+---
+## [Contact Us!](#contact-us)
+
+If you are interested in maintaining this code, taking over this project, continuing work, or have any questions about our repo feel free to reach out!
+
+If you are a Cal Poly student during the 2018-2019 school year, email Landon at:
+`landon.gerrits@me.com`
+
+If you aren't a Cal Poly student or it is past the 2018-2019 school year, email Jessie at:
+`jessiejsmith01@gmail.com`
+
+Cheers!
 
