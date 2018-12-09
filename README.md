@@ -19,6 +19,7 @@ In order to run this repository, you will need to download many packages for swi
 To get started, make sure you have the following:
 - Mojave OS if you are on a Mac
 - XCode to run the swift files
+- Python 3.5 >
 - Flask to run the backend
 - numpy, pandas, pytorch, and pillow to get started on the python end (you will need to import many more modules and libraries than this, just check the top of the python files!)
 
