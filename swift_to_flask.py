@@ -6,9 +6,20 @@ from Neural_Net import *
 import os
 
 app = Flask(__name__)
-#Master = None
+
 @app.route('/startNeuralNet',methods=['POST'])
 def StartNeuralNet():
+    """
+    Route that runs on application start. This function
+    is responsible for training the neural net with the
+    training data provided. It creates a NNMaster object
+    that hosts the training methods for the NeuralNet class.
+    Once training completes, a file named 'NN' will be created.
+    This file stores all of the trained weights and can be
+    accessed by using the torch.load('NN') command.
+    Args: NA
+    Returns: Json success response if neural net successfully trained.
+    """    
     neuralNetFile = "NN"
     Master = NNMaster()
     if(os.path.isfile(neuralNetFile) == False):
@@ -17,6 +28,18 @@ def StartNeuralNet():
     return jsonify(resp= "Neural Net Started Success")
 @app.route('/imageUpload',methods=['POST'])
 def ImageUpload():
+    """
+    Route for image upload. It checks if the NN exists,
+    if not it creates it (this should only happen on an 
+    error because the NN should exist). Otherwise the NN is 
+    loaded and saved. The image is run through the kmeans
+    algorithm and the resulting RGB values and weights are fed 
+    into the neural net. The response from the neural net is 
+    the HSB values as an array. These are fed back to the swift
+    side to display to the user.
+    Args: NA
+    Returns: Json success or fail response if kmeans and prediction successful.
+    """
     data = request.data
     neuralNetFile = "NN"
     Master = NNMaster()
@@ -68,7 +91,14 @@ def ImageUpload():
 
 @app.route('/backPropInit',methods=['POST'])
 def backPropInit():
-
+    """
+    Here is the route for the back propagation for the user
+    specified light values. The function is called using the 
+    old hsb values, the new hsb values, and the rgb and weight values.
+    It is fed into the back prop function to modify the weights.
+    Args: NA
+    Returns: Json success response if neural net successfully back propogated.
+    """
     NN = torch.load("NN")
 
     data = request.data
@@ -81,6 +111,15 @@ def backPropInit():
 
 
 def callBackProp(inputList, outputList, userList, NeuralNet):
+    """
+    Helper function for the back PROPOGATION
+    Args: 
+    inputList: array of RGB and weight values, length of 12
+    outputList: the original predicted HSB values from the NN, array length 9
+    userList: the original outputList with any HSB changes indicated from the user, array length 9
+    NeuralNet: NN object, trained and loaded from the NN file
+    Returns: NA
+    """
 
     #inputList = (r1, g1, b1, w1, r2, g2, b2, w2, r3, g, b3, w3) -- input colors from k-means
     #ouputList = (h1, s1, b1, h2, s2, b2, h3, s3, b3) -- list of colors that program selects
